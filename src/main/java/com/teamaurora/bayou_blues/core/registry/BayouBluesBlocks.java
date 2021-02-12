@@ -74,4 +74,5 @@ public class BayouBluesBlocks {
     public static final RegistryObject<Block> ALGAE = HELPER.createBlockNoItem("algae", ()->new AlgaeBlock(AbstractBlock.Properties.create(Material.PLANTS).zeroHardnessAndResistance().sound(SoundType.LILY_PADS).notSolid().doesNotBlockMovement()));
     public static final RegistryObject<Block> BEARD_MOSS_BLOCK = HELPER.createBlockNoItem("beard_moss_block", ()->new BeardMossBlockBlock(AbstractBlock.Properties.create(Material.PLANTS).hardnessAndResistance(0.1F).sound(SoundType.PLANT).notSolid()));
     public static final RegistryObject<Block> BEARD_MOSS = HELPER.createBlockNoItem("beard_moss", ()->new BeardMossBlock(AbstractBlock.Properties.create(Material.PLANTS).zeroHardnessAndResistance().sound(SoundType.PLANT).notSolid().doesNotBlockMovement().tickRandomly()));
+    public static final RegistryObject<Block> GIANT_FERN = HELPER.createBlock("giant_fern", ()->new DoublePlantBlock(AbstractBlock.Properties.from(Blocks.TALL_GRASS)), ItemGroup.DECORATIONS);
 }
