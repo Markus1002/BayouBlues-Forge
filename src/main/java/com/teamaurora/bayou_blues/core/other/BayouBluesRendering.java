@@ -15,6 +15,7 @@ import java.util.Arrays;
 public class BayouBluesRendering {
     public static void setupRenderLayer() {
         RenderTypeLookup.setRenderLayer(BayouBluesBlocks.CYPRESS_SAPLING.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BayouBluesBlocks.POTTED_CYPRESS_SAPLING.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BayouBluesBlocks.CYPRESS_LEAF_CARPET.get(), RenderType.getCutoutMipped());
         RenderTypeLookup.setRenderLayer(BayouBluesBlocks.CYPRESS_LADDER.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BayouBluesBlocks.HANGING_CYPRESS_LEAVES.get(), RenderType.getCutoutMipped());
