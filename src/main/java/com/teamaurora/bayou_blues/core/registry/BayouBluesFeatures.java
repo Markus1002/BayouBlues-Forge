@@ -10,6 +10,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.WorldGenRegistries;
 import net.minecraft.world.gen.Heightmap;
+import net.minecraft.world.gen.blockplacer.DoublePlantBlockPlacer;
 import net.minecraft.world.gen.blockplacer.SimpleBlockPlacer;
 import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.blockstateprovider.WeightedBlockStateProvider;
@@ -65,6 +66,12 @@ public class BayouBluesFeatures {
         public static final BlockState MAGENTA_LILY = BayouBluesBlocks.MAGENTA_LILY.get().getDefaultState();
         public static final BlockState PURPLE_LILY = BayouBluesBlocks.PURPLE_LILY.get().getDefaultState();
         public static final BlockState LILY_PAD = Blocks.LILY_PAD.getDefaultState();
+
+        public static final BlockState GRASS = Blocks.GRASS.getDefaultState();
+        public static final BlockState TALL_GRASS = Blocks.TALL_GRASS.getDefaultState();
+        public static final BlockState FERN = Blocks.FERN.getDefaultState();
+        public static final BlockState LARGE_FERN = Blocks.LARGE_FERN.getDefaultState();
+        public static final BlockState GIANT_FERN = BayouBluesBlocks.GIANT_FERN.get().getDefaultState();
     }
 
     public static final class Configs {
@@ -121,6 +128,12 @@ public class BayouBluesFeatures {
         public static final BlockClusterFeatureConfig PATCH_LILY_COOL_CONFIG = (new BlockClusterFeatureConfig.Builder(new WeightedBlockStateProvider().addWeightedBlockstate(BlockStates.BLUE_LILY, 2).addWeightedBlockstate(BlockStates.CYAN_LILY, 2).addWeightedBlockstate(BlockStates.LIGHT_BLUE_LILY, 2).addWeightedBlockstate(BlockStates.LILY_PAD, 5), SimpleBlockPlacer.PLACER)).xSpread(5).zSpread(5).tries(15).build();
         public static final BlockClusterFeatureConfig PATCH_LILY_NEUTRAL_CONFIG = (new BlockClusterFeatureConfig.Builder(new WeightedBlockStateProvider().addWeightedBlockstate(BlockStates.LIGHT_GRAY_LILY, 3).addWeightedBlockstate(BlockStates.WHITE_LILY, 3).addWeightedBlockstate(BlockStates.LILY_PAD, 5), SimpleBlockPlacer.PLACER)).xSpread(5).zSpread(5).tries(15).build();
         public static final BlockClusterFeatureConfig PATCH_LILY_WARM_CONFIG = (new BlockClusterFeatureConfig.Builder(new WeightedBlockStateProvider().addWeightedBlockstate(BlockStates.PINK_LILY, 2).addWeightedBlockstate(BlockStates.MAGENTA_LILY, 2).addWeightedBlockstate(BlockStates.PURPLE_LILY, 2).addWeightedBlockstate(BlockStates.LILY_PAD, 5), SimpleBlockPlacer.PLACER)).xSpread(5).zSpread(5).tries(15).build();
+
+        public static final BlockClusterFeatureConfig GRASS_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockStates.GRASS), SimpleBlockPlacer.PLACER)).tries(80).func_227317_b_().build();
+        public static final BlockClusterFeatureConfig TALL_GRASS_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockStates.TALL_GRASS), new DoublePlantBlockPlacer())).xSpread(11).zSpread(11).tries(150).func_227317_b_().build();
+        public static final BlockClusterFeatureConfig FERN_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockStates.FERN), SimpleBlockPlacer.PLACER)).tries(80).func_227317_b_().build();
+        public static final BlockClusterFeatureConfig LARGE_FERN_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockStates.LARGE_FERN), new DoublePlantBlockPlacer())).xSpread(7).zSpread(7).tries(110).func_227317_b_().build();
+        public static final BlockClusterFeatureConfig GIANT_FERN_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockStates.GIANT_FERN), new DoublePlantBlockPlacer())).tries(110).func_227317_b_().build();
     }
 
     public static final class Configured {
@@ -142,7 +155,11 @@ public class BayouBluesFeatures {
         public static final ConfiguredFeature<?, ?> TREES_BAYOU = Feature.RANDOM_SELECTOR.withConfiguration(new MultipleRandomFeatureConfig(ImmutableList.of(CYPRESS_BUSH.withChance(0.35F), MEGA_CYPRESS_KNEES.withChance(0.333333334F)), CYPRESS)).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(20, 0.1F, 1)));
         public static final ConfiguredFeature<?, ?> TREES_BAYOU_WATER = Feature.RANDOM_SELECTOR.withConfiguration(new MultipleRandomFeatureConfig(ImmutableList.of(WATER_MEGA_CYPRESS.withChance(0.333333334F)), WATER_CYPRESS)).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(9, 0.1F, 1)));
 
-        public static final ConfiguredFeature<?, ?> PATCH_TALL_GRASS = Feature.RANDOM_PATCH.withConfiguration(Features.Configs.TALL_GRASS_CONFIG).withPlacement(Features.Placements.PATCH_PLACEMENT).func_242731_b(80);
+        public static final ConfiguredFeature<?, ?> PATCH_GRASS = Feature.RANDOM_PATCH.withConfiguration(Configs.GRASS_CONFIG).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.CHANCE.configure(new ChanceConfig(2)));
+        public static final ConfiguredFeature<?, ?> PATCH_TALL_GRASS = Feature.RANDOM_PATCH.withConfiguration(Configs.TALL_GRASS_CONFIG).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(2, 0.1F, 1)));
+        public static final ConfiguredFeature<?, ?> PATCH_FERN = Feature.RANDOM_PATCH.withConfiguration(Configs.FERN_CONFIG).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.CHANCE.configure(new ChanceConfig(3)));
+        public static final ConfiguredFeature<?, ?> PATCH_LARGE_FERN = Feature.RANDOM_PATCH.withConfiguration(Configs.LARGE_FERN_CONFIG).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(1, 0.3F, 1)));
+        public static final ConfiguredFeature<?, ?> PATCH_GIANT_FERN = Feature.RANDOM_PATCH.withConfiguration(Configs.GIANT_FERN_CONFIG).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.CHANCE.configure(new ChanceConfig(2)));
 
         public static final ConfiguredFeature<?, ?> PATCH_LILY_COOL = Feature.RANDOM_PATCH.withConfiguration(Configs.PATCH_LILY_COOL_CONFIG).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.CHANCE.configure(new ChanceConfig(4)));
         public static final ConfiguredFeature<?, ?> PATCH_LILY_NEUTRAL = Feature.RANDOM_PATCH.withConfiguration(Configs.PATCH_LILY_NEUTRAL_CONFIG).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.CHANCE.configure(new ChanceConfig(4)));
@@ -171,7 +188,11 @@ public class BayouBluesFeatures {
             register("trees_bayou", TREES_BAYOU);
             register("trees_bayou_water", TREES_BAYOU_WATER);
 
+            register("patch_grass", PATCH_GRASS);
             register("patch_tall_grass", PATCH_TALL_GRASS);
+            register("patch_fern", PATCH_FERN);
+            register("patch_large_fern", PATCH_LARGE_FERN);
+            register("patch_giant_fern", PATCH_GIANT_FERN);
 
             register("patch_lily_cool", PATCH_LILY_COOL);
             register("patch_lily_neutral", PATCH_LILY_NEUTRAL);
