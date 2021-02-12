@@ -89,7 +89,11 @@ public class WaterCypressFeature extends Feature<BaseTreeFeatureConfig> {
         if (numBranches == 4) numBranches = 2;
         for (int i = 0; i < numBranches; i++) {
             Direction dir = Direction.byHorizontalIndex(rand.nextInt(4));
-            int x = rand.nextInt(height - 5) + 6;
+            int x;
+            if (bald)
+                x = rand.nextInt(height - 3) + 6;
+            else
+                x = rand.nextInt(height - 5) + 6;
             logs.add(new DirectionalBlockPos(position.up(x).offset(dir), dir));
             logs.add(new DirectionalBlockPos(position.up(x).offset(dir,2), dir));
             disc2H(position.up(x).offset(dir,2), leaves, rand);

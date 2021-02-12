@@ -55,7 +55,11 @@ public class MegaCypressFeature extends Feature<BaseTreeFeatureConfig> {
         }
         int numBranches = rand.nextInt(5) + 4;
         for (int i = 0; i < numBranches; i++) {
-            int x = rand.nextInt(height - 7) + 4;
+            int x;
+            if (bald)
+                x = rand.nextInt(height - 5) + 4;
+            else
+                x = rand.nextInt(height - 7) + 4;
             Direction dir = Direction.byHorizontalIndex(rand.nextInt(4));
             if (dir == Direction.NORTH) {
                 // min z, x varies
