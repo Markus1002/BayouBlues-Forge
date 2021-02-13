@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "XXX",
+    " + "
+  ],
+  "key": {
+    "#": {
+      "item": "bayou_blues:honey_glazed_gooseberries"
+    },
+    "X": {
+      "item": "minecraft:wheat"
+    },
+    "+": {
+      "item": "bayou_blues:gooseberry_jam"
+    }
+  },
+  "result": {
+    "item": "bayou_blues:gooseberry_jam_cookie",
+    "count": 8
+  }
+}
