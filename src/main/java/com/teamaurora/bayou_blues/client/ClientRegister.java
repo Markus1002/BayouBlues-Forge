@@ -1,6 +1,7 @@
-package com.teamaurora.bayou_blues.core.other;
+package com.teamaurora.bayou_blues.client;
 
 import com.minecraftabnormals.abnormals_core.core.util.DataUtil;
+import com.teamaurora.bayou_blues.core.BayouBlues;
 import com.teamaurora.bayou_blues.core.registry.BayouBluesBlocks;
 import net.minecraft.block.DoublePlantBlock;
 import net.minecraft.client.Minecraft;
@@ -12,10 +13,24 @@ import net.minecraft.state.properties.DoubleBlockHalf;
 import net.minecraft.world.FoliageColors;
 import net.minecraft.world.GrassColors;
 import net.minecraft.world.biome.BiomeColors;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 import java.util.Arrays;
 
-public class BayouBluesRendering {
+@Mod.EventBusSubscriber(modid = BayouBlues.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+public class ClientRegister {
+
+    @SubscribeEvent
+    public static void onClientSetup(FMLClientSetupEvent event) {
+        event.enqueueWork(() -> {
+            registerBlockColors();
+            setupRenderLayer();
+        });
+    }
+
     public static void setupRenderLayer() {
         RenderTypeLookup.setRenderLayer(BayouBluesBlocks.CYPRESS_SAPLING.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BayouBluesBlocks.POTTED_CYPRESS_SAPLING.get(), RenderType.getCutout());

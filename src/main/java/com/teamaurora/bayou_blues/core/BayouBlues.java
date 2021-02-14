@@ -2,24 +2,16 @@ package com.teamaurora.bayou_blues.core;
 
 import com.minecraftabnormals.abnormals_core.core.util.registry.RegistryHelper;
 import com.teamaurora.bayou_blues.core.other.BayouBluesCompat;
-import com.teamaurora.bayou_blues.core.other.BayouBluesEvents;
-import com.teamaurora.bayou_blues.core.other.BayouBluesRendering;
 import com.teamaurora.bayou_blues.core.registry.BayouBluesBiomes;
 import com.teamaurora.bayou_blues.core.registry.BayouBluesFeatures;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-import static com.teamaurora.bayou_blues.core.BayouBlues.MODID;
-
-// The value here should match an entry in the META-INF/mods.toml file
-@Mod("bayou_blues")
+@Mod(BayouBlues.MODID)
 public class BayouBlues
 {
     public static final String MODID = "bayou_blues";
@@ -33,16 +25,12 @@ public class BayouBlues
         BayouBluesFeatures.FEATURES.register(eventBus);
         BayouBluesFeatures.TREE_DECORATORS.register(eventBus);
 
-        MinecraftForge.EVENT_BUS.register(this);
-
         eventBus.addListener(this::commonSetup);
-        eventBus.addListener(this::clientSetup);
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, BayouBluesConfig.COMMON_SPEC);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        MinecraftForge.EVENT_BUS.register(new BayouBluesEvents());
         event.enqueueWork(() -> {
             BayouBluesFeatures.Configured.registerConfiguredFeatures();
             BayouBluesCompat.registerFlammables();
@@ -51,13 +39,6 @@ public class BayouBlues
             BayouBluesBiomes.addBiomeTypes();
             BayouBluesBiomes.registerBiomesToDictionary();
             BayouBluesBiomes.addHillBiome();
-        });
-    }
-
-    private void clientSetup(final FMLClientSetupEvent event) {
-        event.enqueueWork(() -> {
-            BayouBluesRendering.registerBlockColors();
-            BayouBluesRendering.setupRenderLayer();
         });
     }
 }
