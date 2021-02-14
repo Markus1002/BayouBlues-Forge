@@ -55,6 +55,7 @@ public class CypressBranchBlock extends Block implements IGrowable {
         worldIn.setBlockState(pos, state.with(AGE, state.get(AGE) + 1), 2);
     }
 
+    @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         switch (state.get(FACING)) {
             case NORTH:
@@ -74,6 +75,7 @@ public class CypressBranchBlock extends Block implements IGrowable {
         return state.get(AGE) < 2;
     }
 
+    @Override
     public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
         int j = state.get(AGE);
         if (j < 2 && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, pos, state, random.nextInt(10) == 0)) {
@@ -82,6 +84,7 @@ public class CypressBranchBlock extends Block implements IGrowable {
         }
     }
 
+    @Override
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         int i = state.get(AGE);
         boolean flag = i == 2;
@@ -89,7 +92,7 @@ public class CypressBranchBlock extends Block implements IGrowable {
             return ActionResultType.PASS;
         } else if (i > 1) {
             spawnAsEntity(worldIn, pos, new ItemStack(BayouBluesItems.GOOSEBERRIES.get(), 1));
-            worldIn.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
+            worldIn.playSound(null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
             worldIn.setBlockState(pos, state.with(AGE, 0), 2);
             return ActionResultType.func_233537_a_(worldIn.isRemote);
         } else {
@@ -97,11 +100,13 @@ public class CypressBranchBlock extends Block implements IGrowable {
         }
     }
 
+    @Override
     public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
         Block block = worldIn.getBlockState(pos.offset(state.get(FACING), -1)).getBlock();
         return block == BayouBluesBlocks.CYPRESS_LOG.get() || block == BayouBluesBlocks.CYPRESS_WOOD.get();
     }
 
+    @Override
     public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
         if (!stateIn.isValidPosition(worldIn, currentPos)) {
             return Blocks.AIR.getDefaultState();
@@ -110,6 +115,7 @@ public class CypressBranchBlock extends Block implements IGrowable {
         }
     }
 
+    @Override
     @Nullable
     public BlockState getStateForPlacement(BlockItemUseContext context) {
         if (!context.replacingClickedOnBlock()) {
@@ -118,7 +124,6 @@ public class CypressBranchBlock extends Block implements IGrowable {
                 return null;
             }
         }
-
         BlockState blockstate1 = this.getDefaultState();
         IWorldReader iworldreader = context.getWorld();
         BlockPos blockpos = context.getPos();
@@ -135,14 +140,17 @@ public class CypressBranchBlock extends Block implements IGrowable {
         return null;
     }
 
+    @Override
     public BlockState rotate(BlockState state, Rotation rot) {
         return state.with(FACING, rot.rotate(state.get(FACING)));
     }
 
+    @Override
     public BlockState mirror(BlockState state, Mirror mirrorIn) {
         return state.rotate(mirrorIn.toRotation(state.get(FACING)));
     }
 
+    @Override
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         super.fillStateContainer(builder.add(FACING, AGE));
     }

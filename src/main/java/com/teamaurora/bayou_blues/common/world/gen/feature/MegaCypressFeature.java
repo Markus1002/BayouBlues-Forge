@@ -3,6 +3,7 @@ package com.teamaurora.bayou_blues.common.world.gen.feature;
 import com.google.common.collect.Sets;
 import com.minecraftabnormals.abnormals_core.core.util.TreeUtil;
 import com.mojang.serialization.Codec;
+import com.teamaurora.bayou_blues.common.util.DirectionalBlockPos;
 import com.teamaurora.bayou_blues.core.registry.BayouBluesBlocks;
 import net.minecraft.block.SaplingBlock;
 import net.minecraft.util.Direction;
@@ -19,16 +20,6 @@ import java.util.*;
 public class MegaCypressFeature extends Feature<BaseTreeFeatureConfig> {
     public MegaCypressFeature(Codec<BaseTreeFeatureConfig> config) {
         super(config);
-    }
-
-    private class DirectionalBlockPos {
-        public BlockPos pos;
-        public Direction direction;
-
-        public DirectionalBlockPos(BlockPos p, Direction a) {
-            pos = p;
-            direction = a;
-        }
     }
 
     @Override
@@ -207,9 +198,9 @@ public class MegaCypressFeature extends Feature<BaseTreeFeatureConfig> {
         }
     }
 
-    private List<BlockPos> cleanLeavesArray(List<BlockPos> leaves, List<MegaCypressFeature.DirectionalBlockPos> logs) {
+    private List<BlockPos> cleanLeavesArray(List<BlockPos> leaves, List<DirectionalBlockPos> logs) {
         List<BlockPos> logsPos = new ArrayList<>();
-        for (MegaCypressFeature.DirectionalBlockPos log : logs) {
+        for (DirectionalBlockPos log : logs) {
             logsPos.add(log.pos);
         }
         List<BlockPos> newLeaves = new ArrayList<>();

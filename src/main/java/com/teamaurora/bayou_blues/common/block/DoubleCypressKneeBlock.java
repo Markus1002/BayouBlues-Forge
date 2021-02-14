@@ -1,12 +1,10 @@
 package com.teamaurora.bayou_blues.common.block;
 
-import com.minecraftabnormals.abnormals_core.core.util.BlockUtil;
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.item.AxeItem;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.BooleanProperty;
@@ -15,9 +13,8 @@ import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.state.properties.DoubleBlockHalf;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.*;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
@@ -26,7 +23,6 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
-import java.util.function.Supplier;
 
 public class DoubleCypressKneeBlock extends Block implements IWaterLoggable {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
@@ -37,17 +33,20 @@ public class DoubleCypressKneeBlock extends Block implements IWaterLoggable {
 
     public DoubleCypressKneeBlock(AbstractBlock.Properties properties) {
         super(properties);
-        this.setDefaultState(this.stateContainer.getBaseState().with(WATERLOGGED, Boolean.valueOf(false)).with(HALF, DoubleBlockHalf.LOWER));
+        this.setDefaultState(this.stateContainer.getBaseState().with(WATERLOGGED, Boolean.FALSE).with(HALF, DoubleBlockHalf.LOWER));
     }
 
+    @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return state.get(HALF) == DoubleBlockHalf.LOWER ? SHAPE_BOTTOM : SHAPE_TOP;
     }
 
+    @Override
     public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return state.get(HALF) == DoubleBlockHalf.LOWER ? SHAPE_BOTTOM : SHAPE_TOP_COLLISION;
     }
 
+    @Override
     public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
         if (state.get(HALF) != DoubleBlockHalf.UPPER) {
             return worldIn.getBlockState(pos.down()).isSolid();
@@ -63,6 +62,7 @@ public class DoubleCypressKneeBlock extends Block implements IWaterLoggable {
         worldIn.setBlockState(pos.up(), this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER).with(WATERLOGGED, worldIn.getFluidState(pos.up()).getFluid() == Fluids.WATER), flags);
     }
 
+    @Override
     public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
         if (!stateIn.isValidPosition(worldIn, currentPos)) {
             return Blocks.AIR.getDefaultState();
@@ -79,18 +79,20 @@ public class DoubleCypressKneeBlock extends Block implements IWaterLoggable {
         }
     }
 
+    @Override
     public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
         if (!worldIn.isRemote) {
             if (player.isCreative()) {
                 removeBottomHalf(worldIn, pos, state, player);
             } else {
-                spawnDrops(state, worldIn, pos, (TileEntity)null, player, player.getHeldItemMainhand());
+                spawnDrops(state, worldIn, pos, null, player, player.getHeldItemMainhand());
             }
         }
 
         super.onBlockHarvested(worldIn, pos, state, player);
     }
 
+    @Override
     public void harvestBlock(World worldIn, PlayerEntity player, BlockPos pos, BlockState state, @Nullable TileEntity te, ItemStack stack) {
         super.harvestBlock(worldIn, player, pos, Blocks.AIR.getDefaultState(), te, stack);
     }
@@ -105,9 +107,9 @@ public class DoubleCypressKneeBlock extends Block implements IWaterLoggable {
                 world.playEvent(player, 2001, blockpos, Block.getStateId(blockstate));
             }
         }
-
     }
 
+    @Override
     @Nullable
     public BlockState getStateForPlacement(BlockItemUseContext context) {
         BlockState blockstate1 = this.getDefaultState();
@@ -122,6 +124,7 @@ public class DoubleCypressKneeBlock extends Block implements IWaterLoggable {
         return null;
     }
 
+    @Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
         worldIn.setBlockState(pos.up(), this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER).with(WATERLOGGED, worldIn.getFluidState(pos.up()).getFluid() == Fluids.WATER), 3);
     }
@@ -131,6 +134,7 @@ public class DoubleCypressKneeBlock extends Block implements IWaterLoggable {
         super.fillStateContainer(builder.add(WATERLOGGED, HALF));
     }
 
+    @Override
     public FluidState getFluidState(BlockState state) {
         return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
     }

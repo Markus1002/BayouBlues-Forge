@@ -1,16 +1,11 @@
 package com.teamaurora.bayou_blues.common.world.gen.feature;
 
-import com.minecraftabnormals.abnormals_core.core.util.MathUtil;
 import com.mojang.serialization.Codec;
-import com.teamaurora.bayou_blues.common.block.AlgaeBlock;
-import com.teamaurora.bayou_blues.core.registry.BayouBluesBlocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ISeedReader;
 import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
 import net.minecraft.world.gen.feature.BlockStateFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.NoFeatureConfig;
 
 import java.util.Random;
 

@@ -21,11 +21,13 @@ public class BeardMossBlockBlock extends Block implements IForgeShearable {
         this.setDefaultState(this.stateContainer.getBaseState().with(PERSISTENT, true));
     }
 
+    @Override
     public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
         BlockState stateUp = worldIn.getBlockState(pos.up());
         return stateUp.isSolid() || stateUp.isIn(BlockTags.LEAVES) || stateUp.getBlock() == this || state.get(PERSISTENT);
     }
 
+    @Override
     public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
         if (!stateIn.isValidPosition(worldIn, currentPos)) {
             return Blocks.AIR.getDefaultState();

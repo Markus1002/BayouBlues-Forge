@@ -1,6 +1,5 @@
 package com.teamaurora.bayou_blues.common.block;
 
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -23,6 +22,7 @@ public class HangingCypressLeavesBlock extends Block implements IForgeShearable 
         super(properties);
     }
 
+    @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return SHAPE;
     }
@@ -50,8 +50,9 @@ public class HangingCypressLeavesBlock extends Block implements IForgeShearable 
         World world = context.getWorld();
         BlockPos pos = context.getPos();
         Block block = world.getBlockState(pos.up()).getBlock();
+
         if (block.isIn(BlockTags.LOGS) || block.isIn(BlockTags.LEAVES)) {
-            return getDefaultState();
+            return this.getDefaultState();
         } else {
             return null;
         }

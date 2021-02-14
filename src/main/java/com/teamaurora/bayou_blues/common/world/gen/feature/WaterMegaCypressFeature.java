@@ -3,6 +3,7 @@ package com.teamaurora.bayou_blues.common.world.gen.feature;
 import com.google.common.collect.Sets;
 import com.minecraftabnormals.abnormals_core.core.util.TreeUtil;
 import com.mojang.serialization.Codec;
+import com.teamaurora.bayou_blues.common.util.DirectionalBlockPos;
 import com.teamaurora.bayou_blues.core.registry.BayouBluesBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -29,16 +30,6 @@ import java.util.*;
 public class WaterMegaCypressFeature extends Feature<BaseTreeFeatureConfig> {
     public WaterMegaCypressFeature(Codec<BaseTreeFeatureConfig> config) {
         super(config);
-    }
-
-    private class DirectionalBlockPos {
-        public BlockPos pos;
-        public Direction direction;
-
-        public DirectionalBlockPos(BlockPos p, Direction a) {
-            pos = p;
-            direction = a;
-        }
     }
 
     @Override
@@ -92,40 +83,40 @@ public class WaterMegaCypressFeature extends Feature<BaseTreeFeatureConfig> {
         }
         int numBranches = rand.nextInt(5) + 4;
         for (int i = 0; i < numBranches; i++) {
-            int x;
+            int y;
             if (bald)
-                x = rand.nextInt(height - 5) + 7;
+                y = rand.nextInt(height - 5) + 7;
             else
-                x = rand.nextInt(height - 7) + 7;
+                y = rand.nextInt(height - 7) + 7;
             Direction dir = Direction.byHorizontalIndex(rand.nextInt(4));
             if (dir == Direction.NORTH) {
                 // min z, x varies
-                addBranch(position.add(rand.nextInt(2),x,0), dir, logs, leaves, rand);
+                addBranch(position.add(rand.nextInt(2), y,0), dir, logs, leaves, rand);
             } else if (dir == Direction.EAST) {
                 // max x, z varies
-                addBranch(position.add(1,x,rand.nextInt(2)), dir, logs, leaves, rand);
+                addBranch(position.add(1, y,rand.nextInt(2)), dir, logs, leaves, rand);
             } else if (dir == Direction.SOUTH) {
                 // max z, x varies
-                addBranch(position.add(rand.nextInt(2),x,1), dir, logs, leaves, rand);
+                addBranch(position.add(rand.nextInt(2), y,1), dir, logs, leaves, rand);
             } else if (dir == Direction.WEST) {
                 // min x, z varies
-                addBranch(position.add(0,x,rand.nextInt(2)), dir, logs, leaves, rand);
+                addBranch(position.add(0, y,rand.nextInt(2)), dir, logs, leaves, rand);
             }
         }
         if (bald) {
             int variant = rand.nextInt(4);
             switch (variant) {
                 case 0:
-                    logs.add(new DirectionalBlockPos(position.up(height+1), Direction.UP));
+                    logs.add(new DirectionalBlockPos(position.up(height + 1), Direction.UP));
                     break;
                 case 1:
-                    logs.add(new DirectionalBlockPos(position.add(1, height+1, 0), Direction.UP));
+                    logs.add(new DirectionalBlockPos(position.add(1, height + 1, 0), Direction.UP));
                     break;
                 case 2:
-                    logs.add(new DirectionalBlockPos(position.add(0, height+1, 1), Direction.UP));
+                    logs.add(new DirectionalBlockPos(position.add(0, height + 1, 1), Direction.UP));
                     break;
                 case 3:
-                    logs.add(new DirectionalBlockPos(position.add(1, height+1, 1), Direction.UP));
+                    logs.add(new DirectionalBlockPos(position.add(1, height + 1, 1), Direction.UP));
             }
         } else {
             canopyDisc1(position.up(height - 2), leaves);
@@ -174,7 +165,7 @@ public class WaterMegaCypressFeature extends Feature<BaseTreeFeatureConfig> {
 
     private void addBranch(BlockPos pos, Direction dir, List<DirectionalBlockPos> logs, List<BlockPos> leaves, Random rand) {
         logs.add(new DirectionalBlockPos(pos.offset(dir), dir));
-        logs.add(new DirectionalBlockPos(pos.offset(dir,2), dir));
+        logs.add(new DirectionalBlockPos(pos.offset(dir, 2), dir));
         disc2H(pos.offset(dir,2), leaves, rand);
         disc1(pos.offset(dir,2).up(), leaves);
     }
@@ -244,9 +235,9 @@ public class WaterMegaCypressFeature extends Feature<BaseTreeFeatureConfig> {
         }
     }
 
-    private List<BlockPos> cleanLeavesArray(List<BlockPos> leaves, List<WaterMegaCypressFeature.DirectionalBlockPos> logs) {
+    private List<BlockPos> cleanLeavesArray(List<BlockPos> leaves, List<DirectionalBlockPos> logs) {
         List<BlockPos> logsPos = new ArrayList<>();
-        for (WaterMegaCypressFeature.DirectionalBlockPos log : logs) {
+        for (DirectionalBlockPos log : logs) {
             logsPos.add(log.pos);
         }
         List<BlockPos> newLeaves = new ArrayList<>();
@@ -270,8 +261,6 @@ public class WaterMegaCypressFeature extends Feature<BaseTreeFeatureConfig> {
         if (world instanceof IWorldReader) {
             return world.hasBlockState(pos, state -> state.canBeReplacedByLeaves((IWorldReader) world, pos)) || world.hasBlockState(pos, state -> state.getFluidState().isTagged(FluidTags.WATER));
         }
-        return world.hasBlockState(pos, (state) -> {
-            return isAirOrWater(world, pos) || state.isIn(BlockTags.LEAVES);
-        });
+        return world.hasBlockState(pos, (state) -> isAirOrWater(world, pos) || state.isIn(BlockTags.LEAVES));
     }
 }

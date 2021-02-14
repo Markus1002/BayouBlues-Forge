@@ -4,6 +4,7 @@ import com.google.common.collect.Sets;
 import com.minecraftabnormals.abnormals_core.core.util.MathUtil;
 import com.minecraftabnormals.abnormals_core.core.util.TreeUtil;
 import com.mojang.serialization.Codec;
+import com.teamaurora.bayou_blues.common.util.DirectionalBlockPos;
 import com.teamaurora.bayou_blues.core.registry.BayouBluesBlocks;
 import net.minecraft.block.SaplingBlock;
 import net.minecraft.util.Direction;
@@ -20,16 +21,6 @@ import java.util.*;
 public class CypressFeature extends Feature<BaseTreeFeatureConfig> {
     public CypressFeature(Codec<BaseTreeFeatureConfig> config) {
         super(config);
-    }
-
-    private class DirectionalBlockPos {
-        public BlockPos pos;
-        public Direction direction;
-
-        public DirectionalBlockPos(BlockPos p, Direction a) {
-            pos = p;
-            direction = a;
-        }
     }
 
     @Override
@@ -59,7 +50,7 @@ public class CypressFeature extends Feature<BaseTreeFeatureConfig> {
             else
                 x = rand.nextInt(height - 5) + 3;
             logs.add(new DirectionalBlockPos(position.up(x).offset(dir), dir));
-            logs.add(new DirectionalBlockPos(position.up(x).offset(dir,2), dir));
+            logs.add(new DirectionalBlockPos(position.up(x).offset(dir, 2), dir));
             disc2H(position.up(x).offset(dir,2), leaves, rand);
             disc1(position.up(x+1).offset(dir,2), leaves);
         }

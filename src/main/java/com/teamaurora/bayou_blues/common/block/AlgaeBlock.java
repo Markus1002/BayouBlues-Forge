@@ -24,6 +24,7 @@ public class AlgaeBlock extends BushBlock implements IGrowable {
         super(builder);
     }
 
+    @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return ALGAE_AABB;
     }

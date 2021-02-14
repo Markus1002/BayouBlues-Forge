@@ -22,18 +22,24 @@ public class LilyItem extends Item {
         this.flower = flower;
     }
 
+    @Override
     public ActionResultType onItemUse(ItemUseContext context) {
         World world = context.getWorld();
         BlockPos pos = context.getPos();
         BlockState state = world.getBlockState(pos);
+
         if (state.getBlock() == Blocks.LILY_PAD) {
             world.setBlockState(pos, flower.getDefaultState());
             ItemStack stack = context.getItem();
             stack.shrink(1);
             SoundType soundtype = SoundType.LILY_PADS;
-            PlayerEntity playerentity = context.getPlayer();
-            world.playSound(playerentity, pos, this.getPlaceSound(state, world, pos, context.getPlayer()), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
-            playerentity.swingArm(context.getHand());
+
+            // Never know what other mods might do; player could be null
+            if (context.getPlayer() != null) {
+                PlayerEntity playerentity = context.getPlayer();
+                world.playSound(playerentity, pos, this.getPlaceSound(state, world, pos, context.getPlayer()), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
+                playerentity.swingArm(context.getHand());
+            }
             return ActionResultType.CONSUME;
         }
         return ActionResultType.PASS;

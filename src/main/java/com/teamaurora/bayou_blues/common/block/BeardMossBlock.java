@@ -46,11 +46,13 @@ public class BeardMossBlock extends Block implements IGrowable {
         worldIn.setBlockState(pos.down(), this.getDefaultState());
     }
 
+    @Override
     public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
         BlockState stateUp = worldIn.getBlockState(pos.up());
         return stateUp.isSolid() || stateUp.getBlock() == this || stateUp.isIn(BlockTags.LEAVES) || stateUp.getBlock() == BayouBluesBlocks.BEARD_MOSS_BLOCK.get();
     }
 
+    @Override
     public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
         if (!stateIn.isValidPosition(worldIn, currentPos)) {
             return Blocks.AIR.getDefaultState();
@@ -59,6 +61,7 @@ public class BeardMossBlock extends Block implements IGrowable {
         }
     }
 
+    @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return SHAPE;
     }
@@ -68,6 +71,7 @@ public class BeardMossBlock extends Block implements IGrowable {
         super.fillStateContainer(builder.add(HALF));
     }
 
+    @Override
     public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
         if (worldIn.getBlockState(pos.down()).getBlock() == this) {
             worldIn.setBlockState(pos, state.with(HALF, DoubleBlockHalf.UPPER));
@@ -81,6 +85,7 @@ public class BeardMossBlock extends Block implements IGrowable {
         return true;
     }
 
+    @Override
     public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
         if (worldIn.rand.nextInt(8) == 0 && worldIn.isAreaLoaded(pos, 4)) { // Forge: check area to prevent loading unloaded chunks
             if (worldIn.isAirBlock(pos.down())) {

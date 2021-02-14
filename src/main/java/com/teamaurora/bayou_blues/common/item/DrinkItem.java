@@ -18,6 +18,7 @@ public class DrinkItem extends Item {
         super(properties);
     }
 
+    @Override
     public ItemStack onItemUseFinish(ItemStack stack, World world, LivingEntity livingEntity) {
         super.onItemUseFinish(stack, world, livingEntity);
         if (livingEntity instanceof ServerPlayerEntity) {
@@ -41,10 +42,12 @@ public class DrinkItem extends Item {
         }
     }
 
+    @Override
     public UseAction getUseAction(ItemStack itemStack) {
         return UseAction.DRINK;
     }
 
+    @Override
     public SoundEvent getEatSound() {
         return SoundEvents.ENTITY_GENERIC_DRINK;
     }

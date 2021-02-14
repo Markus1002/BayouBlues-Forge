@@ -31,6 +31,7 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = BayouBlues.MODID)
 public class BayouBluesEvents {
+
     @SubscribeEvent
     public static void onLivingDamage(LivingDamageEvent event) {
         if (event.getSource() == DamageSource.FALL) {
@@ -74,7 +75,7 @@ public class BayouBluesEvents {
                         }
                     }
                     if (flag) {
-                        worldIn.playSound((PlayerEntity) null, playerIn.getPosX(), playerIn.getPosY(), playerIn.getPosZ(), SoundEvents.ENTITY_FISHING_BOBBER_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (playerIn.getRNG().nextFloat() * 0.4F + 0.8F));
+                        worldIn.playSound(null, playerIn.getPosX(), playerIn.getPosY(), playerIn.getPosZ(), SoundEvents.ENTITY_FISHING_BOBBER_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (playerIn.getRNG().nextFloat() * 0.4F + 0.8F));
                         if (!worldIn.isRemote) {
                             int k = EnchantmentHelper.getFishingSpeedBonus(itemstack);
                             int j = EnchantmentHelper.getFishingLuckBonus(itemstack) + 2;
