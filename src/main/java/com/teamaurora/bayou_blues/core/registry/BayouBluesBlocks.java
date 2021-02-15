@@ -5,6 +5,10 @@ import com.minecraftabnormals.abnormals_core.common.blocks.chest.AbnormalsChestB
 import com.minecraftabnormals.abnormals_core.common.blocks.chest.AbnormalsTrappedChestBlock;
 import com.minecraftabnormals.abnormals_core.common.blocks.sign.AbnormalsStandingSignBlock;
 import com.minecraftabnormals.abnormals_core.common.blocks.sign.AbnormalsWallSignBlock;
+import com.minecraftabnormals.abnormals_core.common.blocks.thatch.ThatchBlock;
+import com.minecraftabnormals.abnormals_core.common.blocks.thatch.ThatchSlabBlock;
+import com.minecraftabnormals.abnormals_core.common.blocks.thatch.ThatchStairsBlock;
+import com.minecraftabnormals.abnormals_core.common.blocks.thatch.ThatchVerticalSlabBlock;
 import com.minecraftabnormals.abnormals_core.common.blocks.wood.*;
 import com.minecraftabnormals.abnormals_core.core.util.registry.BlockSubRegistryHelper;
 import com.mojang.datafixers.util.Pair;
@@ -73,9 +77,19 @@ public class BayouBluesBlocks {
     public static final RegistryObject<Block> PURPLE_LILY = HELPER.createBlockNoItem("purple_lily", ()->new LilyFlowerBlock(BayouBluesItems.PURPLE_LILY, AbstractBlock.Properties.from(Blocks.LILY_PAD)));
     public static final RegistryObject<Block> WHITE_LILY = HELPER.createBlockNoItem("white_lily", ()->new LilyFlowerBlock(BayouBluesItems.WHITE_LILY, AbstractBlock.Properties.from(Blocks.LILY_PAD)));
 
-    // other
+    // algae
     public static final RegistryObject<Block> ALGAE = HELPER.createBlockNoItem("algae", ()->new AlgaeBlock(AbstractBlock.Properties.create(Material.PLANTS).zeroHardnessAndResistance().sound(SoundType.LILY_PADS).notSolid().doesNotBlockMovement()));
+    public static final RegistryObject<Block> ALGAE_THATCH = HELPER.createBlock("algae_thatch", ()->new ThatchBlock(Properties.ALGAE_THATCH), ItemGroup.BUILDING_BLOCKS);
+    public static final RegistryObject<Block> ALGAE_THATCH_SLAB = HELPER.createBlock("algae_thatch_slab", ()->new ThatchSlabBlock(Properties.ALGAE_THATCH), ItemGroup.BUILDING_BLOCKS);
+    public static final RegistryObject<Block> ALGAE_THATCH_STAIRS = HELPER.createBlock("algae_thatch_stairs", ()->new ThatchStairsBlock(ALGAE_THATCH.get().getDefaultState(), Properties.ALGAE_THATCH), ItemGroup.BUILDING_BLOCKS);
+    public static final RegistryObject<Block> ALGAE_THATCH_VERTICAL_SLAB = HELPER.createCompatBlock("quark", "algae_thatch_vertical_slab", ()->new ThatchVerticalSlabBlock(Properties.ALGAE_THATCH), ItemGroup.BUILDING_BLOCKS);
+
+    // other
     public static final RegistryObject<Block> BEARD_MOSS_BLOCK = HELPER.createBlockNoItem("beard_moss_block", ()->new BeardMossBlockBlock(AbstractBlock.Properties.create(Material.PLANTS).hardnessAndResistance(0.1F).sound(SoundType.PLANT).notSolid()));
     public static final RegistryObject<Block> BEARD_MOSS = HELPER.createBlockNoItem("beard_moss", ()->new BeardMossBlock(AbstractBlock.Properties.create(Material.PLANTS).zeroHardnessAndResistance().sound(SoundType.PLANT).notSolid().doesNotBlockMovement().tickRandomly()));
     public static final RegistryObject<Block> GIANT_FERN = HELPER.createBlock("giant_fern", ()->new DoublePlantBlock(AbstractBlock.Properties.from(Blocks.TALL_GRASS)), ItemGroup.DECORATIONS);
+
+    public static class Properties {
+        public static final AbstractBlock.Properties ALGAE_THATCH = AbstractBlock.Properties.create(Material.ORGANIC, MaterialColor.LIME).hardnessAndResistance(0.5F).sound(SoundType.PLANT).notSolid().harvestTool(ToolType.HOE);
+    }
 }

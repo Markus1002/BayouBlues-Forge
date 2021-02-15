@@ -12,7 +12,12 @@ public class BayouBluesCompat {
 
         DataUtil.registerCompostable(BayouBluesItems.GOOSEBERRIES.get(), 0.65F);
         DataUtil.registerCompostable(BayouBluesBlocks.GOOSEBERRY_SACK.get(), 1.0F);
+
         DataUtil.registerCompostable(BayouBluesItems.ALGAE.get(), 0.15F);
+        DataUtil.registerCompostable(BayouBluesBlocks.ALGAE_THATCH.get(), 0.65F);
+        DataUtil.registerCompostable(BayouBluesBlocks.ALGAE_THATCH_SLAB.get(), 0.65F);
+        DataUtil.registerCompostable(BayouBluesBlocks.ALGAE_THATCH_STAIRS.get(), 0.65F);
+        DataUtil.registerCompostable(BayouBluesBlocks.ALGAE_THATCH_VERTICAL_SLAB.get(), 0.65F);
 
         DataUtil.registerCompostable(BayouBluesItems.BEARD_MOSS.get(), 0.3F);
         DataUtil.registerCompostable(BayouBluesItems.BEARD_MOSS_BLOCK.get(), 0.65F);
@@ -50,5 +55,10 @@ public class BayouBluesCompat {
 
         DataUtil.registerFlammable(BayouBluesBlocks.BEARD_MOSS.get(), 15, 100);
         DataUtil.registerFlammable(BayouBluesBlocks.BEARD_MOSS_BLOCK.get(), 15, 100);
+
+        DataUtil.registerFlammable(BayouBluesBlocks.ALGAE_THATCH.get(), 60, 20);
+        DataUtil.registerFlammable(BayouBluesBlocks.ALGAE_THATCH_SLAB.get(), 60, 20);
+        DataUtil.registerFlammable(BayouBluesBlocks.ALGAE_THATCH_STAIRS.get(), 60, 20);
+        DataUtil.registerFlammable(BayouBluesBlocks.ALGAE_THATCH_VERTICAL_SLAB.get(), 60, 20);
     }
 }

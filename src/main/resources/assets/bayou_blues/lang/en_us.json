@@ -76,6 +76,10 @@
 
   "_comment4": "Other Vegetation",
   "block.bayou_blues.algae": "Algae",
+  "block.bayou_blues.algae_thatch": "Algae Thatch",
+  "block.bayou_blues.algae_thatch_slab": "Algae Thatch Slab",
+  "block.bayou_blues.algae_thatch_stairs": "Algae Thatch Stairs",
+  "block.bayou_blues.algae_thatch_vertical_slab": "Algae Thatch Vertical Slab",
 
   "block.bayou_blues.beard_moss_block": "Beard Moss Block",
   "block.bayou_blues.beard_moss": "Beard Moss",

@@ -44,6 +44,11 @@ public class ClientRegister {
         RenderTypeLookup.setRenderLayer(BayouBluesBlocks.CYPRESS_BRANCH.get(), RenderType.getCutout());
 
         RenderTypeLookup.setRenderLayer(BayouBluesBlocks.ALGAE.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BayouBluesBlocks.ALGAE_THATCH.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BayouBluesBlocks.ALGAE_THATCH_SLAB.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BayouBluesBlocks.ALGAE_THATCH_STAIRS.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BayouBluesBlocks.ALGAE_THATCH_VERTICAL_SLAB.get(), RenderType.getCutout());
+
         RenderTypeLookup.setRenderLayer(BayouBluesBlocks.BEARD_MOSS_BLOCK.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BayouBluesBlocks.BEARD_MOSS.get(), RenderType.getCutout());
 
