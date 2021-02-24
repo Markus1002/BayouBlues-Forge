@@ -18,7 +18,7 @@ public class BayouBluesItems {
     public static final RegistryObject<Item> GOOSEBERRY_PIE = HELPER.createItem("gooseberry_pie", ()->new Item(new Item.Properties().food(Foods.GOOSEBERRY_PIE).group(ItemGroup.FOOD)));
 
     public static final RegistryObject<Item> HONEY_GLAZED_GOOSEBERRIES = HELPER.createItem("honey_glazed_gooseberries", ()->new Item(new Item.Properties().food(Foods.HONEY_GLAZED_GOOSEBERRIES).group(ItemGroup.FOOD)));
-    public static final RegistryObject<Item> GOOSEBERRY_JAM = HELPER.createItem("gooseberry_jam", ()->new DrinkItem(new Item.Properties().containerItem(Items.GLASS_BOTTLE).food(Foods.GOOSEBERRY_JAM).maxStackSize(16).group(ItemGroup.FOOD)));
+    public static final RegistryObject<Item> GOOSEBERRY_JAM = HELPER.createItem("gooseberry_jam", ()->new JamItem(new Item.Properties().containerItem(Items.GLASS_BOTTLE).food(Foods.GOOSEBERRY_JAM).maxStackSize(16).group(ItemGroup.FOOD)));
     public static final RegistryObject<Item> GOOSEBERRY_JAM_COOKIE = HELPER.createItem("gooseberry_jam_cookie", ()->new Item(new Item.Properties().food(Foods.GOOSEBERRY_JAM_COOKIE).group(ItemGroup.FOOD)));
 
     public static final RegistryObject<Item> ALGAE = HELPER.createItem("algae", ()->new AlgaeItem(BayouBluesBlocks.ALGAE.get(), new Item.Properties().group(ItemGroup.DECORATIONS)));
