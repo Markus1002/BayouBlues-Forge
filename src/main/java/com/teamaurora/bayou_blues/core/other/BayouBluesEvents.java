@@ -59,7 +59,8 @@ public class BayouBluesEvents {
         }
     }
 
-    @SubscribeEvent
+    // might reconsider this later
+    /*@SubscribeEvent
     public static void onLivingEntityUseItem(LivingEntityUseItemEvent event) {
         if (event.getItem().getItem() instanceof FishingRodItem) {
             if (event.getEntity() instanceof PlayerEntity) {
@@ -89,5 +90,5 @@ public class BayouBluesEvents {
                 }
             }
         }
-    }
+    }*/
 }
