@@ -61,7 +61,7 @@ public class BayouBluesEvents {
         BlockPos pos = event.getPos();
         World world = event.getWorld();
         if (state.getBlock() == Blocks.LILY_PAD) {
-            if (!ModList.get().isLoaded("environmental") || world.getRandom().nextBoolean() || checkAdjacentForSolid(world, pos)) {
+            if (!ModList.get().isLoaded("environmental") || world.getRandom().nextBoolean() || checkAdjacentForSolid(world, pos.down())) {
                 Block lily = LilyFlowerBlock.getRandomLily(world.getRandom());
                 if (lily != null) {
                     world.setBlockState(pos, lily.getDefaultState(), 3);
