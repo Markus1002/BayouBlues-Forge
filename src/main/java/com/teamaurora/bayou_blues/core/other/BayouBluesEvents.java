@@ -65,7 +65,7 @@ public class BayouBluesEvents {
                 Block lily = LilyFlowerBlock.getRandomLily(world.getRandom());
                 if (lily != null) {
                     world.setBlockState(pos, lily.getDefaultState(), 3);
-                    event.setResult(Event.Result.ALLOW);
+                    event.setResult(Event.Result.DENY);
                 }
             }
         }
