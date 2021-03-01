@@ -42,18 +42,21 @@ public class BayouBluesBlocks {
     public static final RegistryObject<Block> CYPRESS_SLAB = HELPER.createBlock("cypress_slab", ()->new WoodSlabBlock(Block.Properties.from(Blocks.OAK_SLAB)), ItemGroup.BUILDING_BLOCKS);
     public static final RegistryObject<Block> CYPRESS_STAIRS = HELPER.createBlock("cypress_stairs", ()->new WoodStairsBlock(CYPRESS_PLANKS.get().getDefaultState(), Block.Properties.from(Blocks.OAK_STAIRS)), ItemGroup.BUILDING_BLOCKS);
     public static final RegistryObject<Block> CYPRESS_PRESSURE_PLATE = HELPER.createBlock("cypress_pressure_plate", ()->new WoodPressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.from(Blocks.OAK_PRESSURE_PLATE)), ItemGroup.REDSTONE);
-    public static final RegistryObject<Block> CYPRESS_FENCE = HELPER.createBlock("cypress_fence", ()->new WoodFenceBlock(Block.Properties.from(Blocks.OAK_FENCE)), ItemGroup.DECORATIONS);
-    public static final RegistryObject<Block> CYPRESS_FENCE_GATE = HELPER.createBlock("cypress_fence_gate", ()->new WoodFenceGateBlock(Block.Properties.from(Blocks.OAK_FENCE_GATE)), ItemGroup.REDSTONE);
+    public static final RegistryObject<Block> CYPRESS_FENCE = HELPER.createFuelBlock("cypress_fence", ()->new WoodFenceBlock(Block.Properties.from(Blocks.OAK_FENCE)), 300, ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> CYPRESS_FENCE_GATE = HELPER.createFuelBlock("cypress_fence_gate", ()->new WoodFenceGateBlock(Block.Properties.from(Blocks.OAK_FENCE_GATE)), 300, ItemGroup.REDSTONE);
     public static final RegistryObject<Block> CYPRESS_BUTTON = HELPER.createBlock("cypress_button", ()->new AbnormalsWoodButtonBlock(Block.Properties.from(Blocks.OAK_BUTTON)), ItemGroup.REDSTONE);
     public static final RegistryObject<Block> CYPRESS_DOOR = HELPER.createBlock("cypress_door", ()->new WoodDoorBlock(Block.Properties.from(Blocks.OAK_DOOR)), ItemGroup.REDSTONE);
     public static final RegistryObject<Block> CYPRESS_TRAPDOOR = HELPER.createBlock("cypress_trapdoor", ()->new WoodTrapDoorBlock(Block.Properties.from(Blocks.OAK_TRAPDOOR)), ItemGroup.REDSTONE);
     public static final Pair<RegistryObject<AbnormalsStandingSignBlock>, RegistryObject<AbnormalsWallSignBlock>> CYPRESS_SIGNS = HELPER.createSignBlock("cypress", MaterialColor.PURPLE_TERRACOTTA);
 
-    public static final RegistryObject<Block> CYPRESS_BOOKSHELF = HELPER.createCompatBlock("quark", "cypress_bookshelf", ()->new BookshelfBlock(Block.Properties.from(Blocks.BOOKSHELF)), ItemGroup.BUILDING_BLOCKS);
+    public static final RegistryObject<Block> CYPRESS_BOOKSHELF = HELPER.createCompatFuelBlock("quark", "cypress_bookshelf", ()->new BookshelfBlock(Block.Properties.from(Blocks.BOOKSHELF)), 300, ItemGroup.BUILDING_BLOCKS);
     public static final RegistryObject<Block> VERTICAL_CYPRESS_PLANKS = HELPER.createCompatBlock("quark", "vertical_cypress_planks", ()->new Block(Block.Properties.from(Blocks.OAK_PLANKS)), ItemGroup.BUILDING_BLOCKS);
-    public static final RegistryObject<Block> CYPRESS_VERTICAL_SLAB = HELPER.createCompatBlock("quark", "cypress_vertical_slab", ()->new VerticalSlabBlock(Block.Properties.from(Blocks.OAK_PLANKS)), ItemGroup.BUILDING_BLOCKS);
-    public static final RegistryObject<Block> CYPRESS_LADDER = HELPER.createCompatBlock("quark", "cypress_ladder", ()->new AbnormalsLadderBlock(Block.Properties.from(Blocks.LADDER).harvestTool(ToolType.AXE)), ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> CYPRESS_VERTICAL_SLAB = HELPER.createCompatFuelBlock("quark", "cypress_vertical_slab", ()->new VerticalSlabBlock(Block.Properties.from(Blocks.OAK_PLANKS)), 150, ItemGroup.BUILDING_BLOCKS);
+    public static final RegistryObject<Block> CYPRESS_LADDER = HELPER.createCompatFuelBlock("quark", "cypress_ladder", ()->new AbnormalsLadderBlock(Block.Properties.from(Blocks.LADDER).harvestTool(ToolType.AXE)), 300, ItemGroup.DECORATIONS);
     public static final RegistryObject<Block> CYPRESS_LEAF_CARPET = HELPER.createBlock("cypress_leaf_carpet", ()->new LeafCarpetBlock(Block.Properties.from(CYPRESS_LEAVES.get())), ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> STRIPPED_CYPRESS_POST = HELPER.createCompatFuelBlock("quark", "stripped_cypress_post", () -> new WoodPostBlock(AbstractBlock.Properties.from(Blocks.OAK_FENCE)), 300, ItemGroup.BUILDING_BLOCKS);
+    public static final RegistryObject<Block> CYPRESS_POST = HELPER.createCompatFuelBlock("quark", "cypress_post", () -> new WoodPostBlock(STRIPPED_CYPRESS_POST, AbstractBlock.Properties.from(Blocks.OAK_FENCE)), 300, ItemGroup.BUILDING_BLOCKS);
+    public static final RegistryObject<Block> CYPRESS_HEDGE = HELPER.createCompatFuelBlock("quark", "cypress_hedge", () -> new HedgeBlock(AbstractBlock.Properties.from(Blocks.OAK_FENCE)), 300, ItemGroup.DECORATIONS);
     public static final Pair<RegistryObject<AbnormalsChestBlock>, RegistryObject<AbnormalsTrappedChestBlock>> CYPRESS_CHESTS = HELPER.createCompatChestBlocks("cypress", MaterialColor.PURPLE_TERRACOTTA);
 
     public static final RegistryObject<Block> CYPRESS_BEEHIVE = HELPER.createCompatBlock("buzzier_bees", "cypress_beehive", ()->new AbnormalsBeehiveBlock(Block.Properties.from(Blocks.BEEHIVE)), ItemGroup.DECORATIONS);

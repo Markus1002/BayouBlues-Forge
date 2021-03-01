@@ -38,6 +38,8 @@ public class ClientRegister {
         RenderTypeLookup.setRenderLayer(BayouBluesBlocks.CYPRESS_LADDER.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BayouBluesBlocks.HANGING_CYPRESS_LEAVES.get(), RenderType.getCutoutMipped());
 
+        RenderTypeLookup.setRenderLayer(BayouBluesBlocks.CYPRESS_HEDGE.get(), RenderType.getCutoutMipped());
+
         RenderTypeLookup.setRenderLayer(BayouBluesBlocks.CYPRESS_KNEE.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BayouBluesBlocks.LARGE_CYPRESS_KNEE.get(), RenderType.getCutout());
 
@@ -66,12 +68,12 @@ public class ClientRegister {
 
     public static void registerBlockColors() {
         BlockColors blockColors = Minecraft.getInstance().getBlockColors();
-        DataUtil.registerBlockColor(blockColors, (x, world, pos, u) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefault(), Arrays.asList(BayouBluesBlocks.CYPRESS_LEAVES, BayouBluesBlocks.HANGING_CYPRESS_LEAVES, BayouBluesBlocks.CYPRESS_LEAF_CARPET));
+        DataUtil.registerBlockColor(blockColors, (x, world, pos, u) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefault(), Arrays.asList(BayouBluesBlocks.CYPRESS_LEAVES, BayouBluesBlocks.HANGING_CYPRESS_LEAVES, BayouBluesBlocks.CYPRESS_LEAF_CARPET, BayouBluesBlocks.CYPRESS_HEDGE));
         DataUtil.registerBlockColor(blockColors, (x, world, pos, u) -> world != null && pos != null ? 2129968 : 7455580, Arrays.asList(BayouBluesBlocks.BLUE_LILY, BayouBluesBlocks.LIGHT_GRAY_LILY, BayouBluesBlocks.CYAN_LILY, BayouBluesBlocks.LIGHT_BLUE_LILY, BayouBluesBlocks.MAGENTA_LILY, BayouBluesBlocks.PINK_LILY, BayouBluesBlocks.PURPLE_LILY, BayouBluesBlocks.WHITE_LILY));
         DataUtil.registerBlockColor(blockColors, (x, world, pos, u) -> world != null && pos != null ? BiomeColors.getGrassColor(world, x.get(DoublePlantBlock.HALF) == DoubleBlockHalf.UPPER ? pos.down() : pos) : -1, Arrays.asList(BayouBluesBlocks.GIANT_FERN));
 
         ItemColors itemColors = Minecraft.getInstance().getItemColors();
-        DataUtil.registerBlockItemColor(itemColors, (color, items) -> FoliageColors.getDefault(), Arrays.asList(BayouBluesBlocks.CYPRESS_LEAVES, BayouBluesBlocks.HANGING_CYPRESS_LEAVES, BayouBluesBlocks.CYPRESS_LEAF_CARPET));
+        DataUtil.registerBlockItemColor(itemColors, (color, items) -> FoliageColors.getDefault(), Arrays.asList(BayouBluesBlocks.CYPRESS_LEAVES, BayouBluesBlocks.HANGING_CYPRESS_LEAVES, BayouBluesBlocks.CYPRESS_LEAF_CARPET, BayouBluesBlocks.CYPRESS_HEDGE));
         DataUtil.registerBlockItemColor(itemColors, (color, items) -> GrassColors.get(0.5D, 1.0D), Arrays.asList(BayouBluesBlocks.GIANT_FERN));
     }
 }

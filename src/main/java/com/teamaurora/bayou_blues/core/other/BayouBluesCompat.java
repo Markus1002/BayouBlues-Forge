@@ -49,6 +49,9 @@ public class BayouBluesCompat {
         DataUtil.registerFlammable(BayouBluesBlocks.CYPRESS_VERTICAL_SLAB.get(), 5, 20);
         DataUtil.registerFlammable(BayouBluesBlocks.CYPRESS_BOOKSHELF.get(), 30, 20);
         DataUtil.registerFlammable(BayouBluesBlocks.CYPRESS_BEEHIVE.get(), 5, 20);
+        DataUtil.registerFlammable(BayouBluesBlocks.CYPRESS_POST.get(), 5, 20);
+        DataUtil.registerFlammable(BayouBluesBlocks.STRIPPED_CYPRESS_POST.get(), 5, 20);
+        DataUtil.registerFlammable(BayouBluesBlocks.CYPRESS_HEDGE.get(), 5, 20);
 
         DataUtil.registerFlammable(BayouBluesBlocks.CYPRESS_BRANCH.get(), 60, 100);
         DataUtil.registerFlammable(BayouBluesBlocks.GOOSEBERRY_SACK.get(), 60, 20);
