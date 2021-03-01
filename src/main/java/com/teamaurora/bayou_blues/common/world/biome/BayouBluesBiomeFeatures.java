@@ -30,6 +30,11 @@ public class BayouBluesBiomeFeatures {
             withBayouFeatures(event.getGeneration(), event.getSpawns());
         } else if (DataUtil.matchesKeys(biomeName, Biomes.SWAMP, Biomes.SWAMP_HILLS)) {
             withLilyFlowers(event.getGeneration());
+        } else if (biomeName.equals(new ResourceLocation("environmental","blossom_woods")) ||
+                biomeName.equals(new ResourceLocation("environmental","blossom_hills")) ||
+                biomeName.equals(new ResourceLocation("environmental","blossom_highlands")) ||
+                biomeName.equals(new ResourceLocation("environmental","blossom_valleys"))) {
+            withWarmLilyFlowers(event.getGeneration());
         }
     }
 
@@ -83,6 +88,11 @@ public class BayouBluesBiomeFeatures {
 
     private static void withLilyFlowers(BiomeGenerationSettingsBuilder builder) {
         builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_COOL);
+        builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_NEUTRAL);
+        builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_WARM);
+    }
+
+    private static void withWarmLilyFlowers(BiomeGenerationSettingsBuilder builder) {
         builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_NEUTRAL);
         builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_WARM);
     }

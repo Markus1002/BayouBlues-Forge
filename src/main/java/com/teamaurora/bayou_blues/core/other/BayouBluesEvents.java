@@ -14,10 +14,7 @@ import net.minecraft.entity.projectile.FishingBobberEntity;
 import net.minecraft.item.FishingRodItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.IWorldWriter;
@@ -27,6 +24,7 @@ import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = BayouBlues.MODID)
@@ -45,16 +43,30 @@ public class BayouBluesEvents {
         }
     }
 
+    private static boolean checkAdjacentForSolid(World world, BlockPos pos) {
+        for (int i = 0; i < 4; i++) {
+            Direction dir = Direction.byHorizontalIndex(i);
+            BlockPos poffset = pos.offset(dir);
+            BlockState state = world.getBlockState(poffset);
+            if (!state.getBlock().isAir(state, world, poffset)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @SubscribeEvent
     public static void onBonemealUse(BonemealEvent event) {
         BlockState state = event.getBlock();
         BlockPos pos = event.getPos();
         World world = event.getWorld();
         if (state.getBlock() == Blocks.LILY_PAD) {
-            Block lily = LilyFlowerBlock.getRandomLily(world.getRandom());
-            if (lily != null) {
-                world.setBlockState(pos, lily.getDefaultState(), 3);
-                event.setResult(Event.Result.ALLOW);
+            if (!ModList.get().isLoaded("environmental") || world.getRandom().nextBoolean() || checkAdjacentForSolid(world, pos)) {
+                Block lily = LilyFlowerBlock.getRandomLily(world.getRandom());
+                if (lily != null) {
+                    world.setBlockState(pos, lily.getDefaultState(), 3);
+                    event.setResult(Event.Result.ALLOW);
+                }
             }
         }
     }
