@@ -11,6 +11,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.FishingBobberEntity;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.FishingRodItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Stats;
@@ -48,7 +49,7 @@ public class BayouBluesEvents {
             Direction dir = Direction.byHorizontalIndex(i);
             BlockPos poffset = pos.offset(dir);
             BlockState state = world.getBlockState(poffset);
-            if (!state.getBlock().isAir(state, world, poffset)) {
+            if (world.getFluidState(poffset).getFluid() != Fluids.WATER) {
                 return true;
             }
         }
