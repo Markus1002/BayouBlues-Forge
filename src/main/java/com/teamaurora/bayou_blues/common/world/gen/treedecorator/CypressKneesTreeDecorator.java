@@ -63,7 +63,7 @@ public class CypressKneesTreeDecorator extends TreeDecorator {
                                             world.setBlockState(newPos, BayouBluesBlocks.CYPRESS_KNEE.get().getDefaultState().with(CypressKneeBlock.WATERLOGGED, false), 3);
                                         }
                                     }
-                                } else if (world.getFluidState(newPos).getFluid() == Fluids.WATER && world.getBlockState(newPos.down()).isSolid()) {
+                                } else if (world.getBlockState(newPos).getBlock() == Blocks.WATER && world.getBlockState(newPos.down()).isSolid()) {
                                     if (rand.nextInt(8) == 0) {
                                         if (rand.nextInt(4) != 0 && world.getBlockState(newPos.up()).isAir()) {
                                             ((DoubleCypressKneeBlock) BayouBluesBlocks.LARGE_CYPRESS_KNEE.get()).placeAt(world, newPos, 3);
