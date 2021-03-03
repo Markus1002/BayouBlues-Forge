@@ -4,12 +4,14 @@ import com.teamaurora.bayou_blues.common.block.CypressKneeBlock;
 import com.teamaurora.bayou_blues.common.block.DoubleCypressKneeBlock;
 import com.teamaurora.bayou_blues.common.block.LilyFlowerBlock;
 import com.teamaurora.bayou_blues.core.BayouBlues;
+import com.teamaurora.bayou_blues.core.BayouBluesConfig;
 import com.teamaurora.bayou_blues.core.registry.BayouBluesBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.DoublePlantBlock;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.FishingBobberEntity;
 import net.minecraft.fluid.Fluids;
@@ -19,6 +21,7 @@ import net.minecraft.state.properties.DoubleBlockHalf;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.IWorldWriter;
 import net.minecraft.world.World;
@@ -63,13 +66,20 @@ public class BayouBluesEvents {
         BlockState state = event.getBlock();
         BlockPos pos = event.getPos();
         World world = event.getWorld();
-        if (state.getBlock() == Blocks.LILY_PAD) {
+        if (state.getBlock() == Blocks.LILY_PAD && BayouBluesConfig.COMMON.lilyBonemealBehavior.get() == 1) {
             if (!ModList.get().isLoaded("environmental") || world.getRandom().nextBoolean() || checkAdjacentForSolid(world, pos.down())) {
                 Block lily = LilyFlowerBlock.getRandomLily(world.getRandom());
                 if (lily != null) {
                     world.setBlockState(pos, lily.getDefaultState(), 3);
                     event.setResult(Event.Result.ALLOW);
                 }
+            }
+        }
+        if (BayouBluesConfig.COMMON.lilyBonemealBehavior.get() == 2) {
+            Block stateBlock = state.getBlock();
+            if (stateBlock instanceof LilyFlowerBlock) {
+                Block.spawnAsEntity(world, pos, stateBlock.getItem(world, pos, state));
+                event.setResult(Event.Result.ALLOW);
             }
         }
         if (state.getBlock() == Blocks.LARGE_FERN) {

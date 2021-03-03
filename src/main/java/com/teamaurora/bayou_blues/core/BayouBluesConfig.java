@@ -7,10 +7,14 @@ public class BayouBluesConfig {
     public static class Common {
         public final ForgeConfigSpec.ConfigValue<Integer> bayouWeight;
         public final ForgeConfigSpec.ConfigValue<Integer> bayouHillsWeight;
+        public final ForgeConfigSpec.ConfigValue<Integer> lilyBonemealBehavior;
 
         Common(ForgeConfigSpec.Builder builder) {
             builder.comment("Common configurations for Bayou Blues")
             .push("common");
+
+            lilyBonemealBehavior = builder.comment("Lily bonemeal behavior. 0=none. 1=bonemealing lily pad grows lily flowers. 2=bonemealing lily flower gives you more of it.")
+                    .define("Lily bonemeal behavior", 1);
 
             builder.comment("Values for biome frequencies; lower = more rare. (Requires restart)")
             .push("biome_weights");
