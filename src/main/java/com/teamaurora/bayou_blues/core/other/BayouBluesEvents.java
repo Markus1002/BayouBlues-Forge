@@ -8,12 +8,14 @@ import com.teamaurora.bayou_blues.core.registry.BayouBluesBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.DoublePlantBlock;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.FishingBobberEntity;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.FishingRodItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.state.properties.DoubleBlockHalf;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
@@ -66,8 +68,17 @@ public class BayouBluesEvents {
                 Block lily = LilyFlowerBlock.getRandomLily(world.getRandom());
                 if (lily != null) {
                     world.setBlockState(pos, lily.getDefaultState(), 3);
-                    event.setResult(Event.Result.DENY);
+                    event.setResult(Event.Result.ALLOW);
                 }
+            }
+        }
+        if (state.getBlock() == Blocks.LARGE_FERN) {
+            if (state.get(DoublePlantBlock.HALF) == DoubleBlockHalf.LOWER) {
+                ((DoublePlantBlock) BayouBluesBlocks.GIANT_FERN.get()).placeAt(world, pos, 3);
+                event.setResult(Event.Result.ALLOW);
+            } else {
+                ((DoublePlantBlock) BayouBluesBlocks.GIANT_FERN.get()).placeAt(world, pos.down(), 3);
+                event.setResult(Event.Result.ALLOW);
             }
         }
     }
