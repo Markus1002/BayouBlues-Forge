@@ -2,6 +2,7 @@ package com.teamaurora.bayou_blues.common.world.biome;
 
 import com.minecraftabnormals.abnormals_core.core.util.DataUtil;
 import com.teamaurora.bayou_blues.core.BayouBlues;
+import com.teamaurora.bayou_blues.core.BayouBluesConfig;
 import com.teamaurora.bayou_blues.core.registry.BayouBluesBiomes;
 import com.teamaurora.bayou_blues.core.registry.BayouBluesFeatures;
 import net.minecraft.entity.EntityClassification;
@@ -87,13 +88,17 @@ public class BayouBluesBiomeFeatures {
     }
 
     private static void withLilyFlowers(BiomeGenerationSettingsBuilder builder) {
-        builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_COOL);
-        builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_NEUTRAL);
-        builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_WARM);
+        if (BayouBluesConfig.COMMON.doLiliesSpawn.get()) {
+            builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_COOL);
+            builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_NEUTRAL);
+            builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_WARM);
+        }
     }
 
     private static void withWarmLilyFlowers(BiomeGenerationSettingsBuilder builder) {
-        builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_NEUTRAL);
-        builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_WARM);
+        if (BayouBluesConfig.COMMON.doLiliesSpawn.get()) {
+            builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_NEUTRAL);
+            builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_WARM);
+        }
     }
 }
