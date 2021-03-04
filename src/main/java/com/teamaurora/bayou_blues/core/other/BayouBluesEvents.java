@@ -70,7 +70,8 @@ public class BayouBluesEvents {
         if (state.getBlock() == Blocks.LILY_PAD && BayouBluesConfig.COMMON.lilyBonemealBehavior.get() == 1) {
             if (!ModList.get().isLoaded("environmental") || world.getRandom().nextBoolean() || checkAdjacentForSolid(world, pos.down())) {
                 Block lily = LilyFlowerBlock.getRandomLily(world.getRandom());
-                if (lily != null) {
+
+                if (!world.isRemote) {
                     world.setBlockState(pos, lily.getDefaultState(), 3);
                     event.setResult(Event.Result.ALLOW);
                 }
