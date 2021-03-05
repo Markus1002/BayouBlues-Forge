@@ -17,6 +17,7 @@ import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
 
+@SuppressWarnings("deprecation")
 public class AlgaeBlock extends BushBlock implements IGrowable {
     protected static final VoxelShape ALGAE_AABB = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
 

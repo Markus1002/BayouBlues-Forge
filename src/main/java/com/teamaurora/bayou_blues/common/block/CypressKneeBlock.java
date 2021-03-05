@@ -17,6 +17,7 @@ import net.minecraft.world.IWorldReader;
 
 import javax.annotation.Nullable;
 
+@SuppressWarnings("deprecation")
 public class CypressKneeBlock extends Block implements IWaterLoggable {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(3.0D, 0.0D, 3.0D, 13.0D, 15.0D, 13.0D);

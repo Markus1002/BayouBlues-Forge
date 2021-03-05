@@ -22,6 +22,7 @@ import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
 
+@SuppressWarnings("deprecation")
 public class BeardMossBlock extends Block implements IGrowable {
     public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(3.0D, 0.0D, 3.0D, 13.0D, 16.0D, 13.0D);
