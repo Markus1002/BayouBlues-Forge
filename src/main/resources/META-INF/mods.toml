@@ -4,31 +4,31 @@ license="All rights reserved"
 issueTrackerURL="https://github.com/teamauroramods/BayouBlues/issues"
 
 [[mods]]
-modId="bayou_blues"
-version="${file.jarVersion}"
-displayName="Bayou Blues"
-displayURL="https://discord.gg/BgE4EpP"
-logoFile="logo.png"
-authors="Team Aurora"
-description="A swampy new biome!"
+    modId="bayou_blues"
+    version="${file.jarVersion}"
+    displayName="Bayou Blues"
+    displayURL="https://discord.gg/BgE4EpP"
+    logoFile="logo.png"
+    authors="Team Aurora"
+    description="A swampy new biome!"
 
 [[dependencies.bayou_blues]]
-modId="forge"
-mandatory=true
-versionRange="[35.1.10,)"
-ordering="NONE"
-side="BOTH"
+    modId="forge"
+    mandatory=true
+    versionRange="[35.1.10,)"
+    ordering="NONE"
+    side="BOTH"
 
 [[dependencies.bayou_blues]]
-modId="minecraft"
-mandatory=true
-versionRange="[1.16.4]"
-ordering="NONE"
-side="BOTH"
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.4]"
+    ordering="NONE"
+    side="BOTH"
 
 [[dependencies.bayou_blues]]
-modId="abnormals_core"
-mandatory=true
-versionRange="[3.0.6,)"
-ordering="AFTER"
-side="BOTH"
+    modId="abnormals_core"
+    mandatory=true
+    versionRange="[3.1.0,)"
+    ordering="AFTER"
+    side="BOTH"
