@@ -80,6 +80,15 @@ public class BayouBluesBlocks {
     public static final RegistryObject<Block> PURPLE_LILY = HELPER.createBlockNoItem("purple_lily", ()->new LilyFlowerBlock(BayouBluesItems.PURPLE_LILY, AbstractBlock.Properties.from(Blocks.LILY_PAD)));
     public static final RegistryObject<Block> WHITE_LILY = HELPER.createBlockNoItem("white_lily", ()->new LilyFlowerBlock(BayouBluesItems.WHITE_LILY, AbstractBlock.Properties.from(Blocks.LILY_PAD)));
 
+    public static final RegistryObject<Block> POTTED_BLUE_LILY = HELPER.createBlockNoItem("potted_blue_lily", ()->new FlowerPotBlock(BLUE_LILY.get(), Block.Properties.from(Blocks.POTTED_ALLIUM)));
+    public static final RegistryObject<Block> POTTED_LIGHT_GRAY_LILY = HELPER.createBlockNoItem("potted_light_gray_lily", ()->new FlowerPotBlock(LIGHT_GRAY_LILY.get(), Block.Properties.from(Blocks.POTTED_ALLIUM)));
+    public static final RegistryObject<Block> POTTED_CYAN_LILY = HELPER.createBlockNoItem("potted_cyan_lily", ()->new FlowerPotBlock(CYAN_LILY.get(), Block.Properties.from(Blocks.POTTED_ALLIUM)));
+    public static final RegistryObject<Block> POTTED_LIGHT_BLUE_LILY = HELPER.createBlockNoItem("potted_light_blue_lily", ()->new FlowerPotBlock(LIGHT_BLUE_LILY.get(), Block.Properties.from(Blocks.POTTED_ALLIUM)));
+    public static final RegistryObject<Block> POTTED_MAGENTA_LILY = HELPER.createBlockNoItem("potted_magenta_lily", ()->new FlowerPotBlock(MAGENTA_LILY.get(), Block.Properties.from(Blocks.POTTED_ALLIUM)));
+    public static final RegistryObject<Block> POTTED_PINK_LILY = HELPER.createBlockNoItem("potted_pink_lily", ()->new FlowerPotBlock(PINK_LILY.get(), Block.Properties.from(Blocks.POTTED_ALLIUM)));
+    public static final RegistryObject<Block> POTTED_PURPLE_LILY = HELPER.createBlockNoItem("potted_purple_lily", ()->new FlowerPotBlock(PURPLE_LILY.get(), Block.Properties.from(Blocks.POTTED_ALLIUM)));
+    public static final RegistryObject<Block> POTTED_WHITE_LILY = HELPER.createBlockNoItem("potted_white_lily", ()->new FlowerPotBlock(WHITE_LILY.get(), Block.Properties.from(Blocks.POTTED_ALLIUM)));
+
     // algae
     public static final RegistryObject<Block> ALGAE = HELPER.createBlockNoItem("algae", ()->new AlgaeBlock(AbstractBlock.Properties.create(Material.PLANTS).zeroHardnessAndResistance().sound(SoundType.LILY_PADS).notSolid().doesNotBlockMovement()));
     public static final RegistryObject<Block> ALGAE_THATCH = HELPER.createBlock("algae_thatch", ()->new ThatchBlock(Properties.ALGAE_THATCH), ItemGroup.BUILDING_BLOCKS);

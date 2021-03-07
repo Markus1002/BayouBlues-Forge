@@ -63,6 +63,15 @@ public class ClientRegister {
         RenderTypeLookup.setRenderLayer(BayouBluesBlocks.PURPLE_LILY.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BayouBluesBlocks.WHITE_LILY.get(), RenderType.getCutout());
 
+        RenderTypeLookup.setRenderLayer(BayouBluesBlocks.POTTED_BLUE_LILY.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BayouBluesBlocks.POTTED_LIGHT_GRAY_LILY.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BayouBluesBlocks.POTTED_CYAN_LILY.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BayouBluesBlocks.POTTED_LIGHT_BLUE_LILY.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BayouBluesBlocks.POTTED_MAGENTA_LILY.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BayouBluesBlocks.POTTED_PINK_LILY.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BayouBluesBlocks.POTTED_PURPLE_LILY.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BayouBluesBlocks.POTTED_WHITE_LILY.get(), RenderType.getCutout());
+
         RenderTypeLookup.setRenderLayer(BayouBluesBlocks.GIANT_FERN.get(), RenderType.getCutout());
     }
 
