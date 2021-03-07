@@ -33,27 +33,27 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = BayouBlues.MODID)
 public class BayouBluesEvents {
 
     @SubscribeEvent
-    public static void onLivingDamage(LivingDamageEvent event) {
+    public void onLivingDamage(LivingDamageEvent event) {
         if (event.getSource() == DamageSource.FALL) {
             BlockPos pos = event.getEntity().getPosition().down();
             IWorldReader world = event.getEntity().getEntityWorld();
             BlockState state = world.getBlockState(pos);
             Block block = state.getBlock();
+
             if (block instanceof CypressKneeBlock || block instanceof DoubleCypressKneeBlock) {
                 event.getEntity().attackEntityFrom(DamageSource.GENERIC, event.getAmount() * 2);
             }
         }
     }
 
-    private static boolean checkAdjacentForSolid(World world, BlockPos pos) {
+    private boolean checkAdjacentForSolid(World world, BlockPos pos) {
         for (int i = 0; i < 4; i++) {
             Direction dir = Direction.byHorizontalIndex(i);
             BlockPos poffset = pos.offset(dir);
-            BlockState state = world.getBlockState(poffset);
+
             if (world.getFluidState(poffset).getFluid() != Fluids.WATER) {
                 return true;
             }
@@ -62,14 +62,16 @@ public class BayouBluesEvents {
     }
 
     @SubscribeEvent
-    public static void onBonemealUse(BonemealEvent event) {
+    public void onBonemealUse(BonemealEvent event) {
         BlockState state = event.getBlock();
         BlockPos pos = event.getPos();
         World world = event.getWorld();
+
         if (state.getBlock() == Blocks.LILY_PAD && BayouBluesConfig.COMMON.lilyBonemealBehavior.get() == 1) {
             if (!ModList.get().isLoaded("environmental") || world.getRandom().nextBoolean() || checkAdjacentForSolid(world, pos.down())) {
                 Block lily = LilyFlowerBlock.getRandomLily(world.getRandom());
-                if (lily != null) {
+
+                if (!world.isRemote) {
                     world.setBlockState(pos, lily.getDefaultState(), 3);
                     event.setResult(Event.Result.ALLOW);
                 }
@@ -85,11 +87,10 @@ public class BayouBluesEvents {
         if (state.getBlock() == Blocks.LARGE_FERN) {
             if (state.get(DoublePlantBlock.HALF) == DoubleBlockHalf.LOWER) {
                 ((DoublePlantBlock) BayouBluesBlocks.GIANT_FERN.get()).placeAt(world, pos, 3);
-                event.setResult(Event.Result.ALLOW);
             } else {
                 ((DoublePlantBlock) BayouBluesBlocks.GIANT_FERN.get()).placeAt(world, pos.down(), 3);
-                event.setResult(Event.Result.ALLOW);
             }
+            event.setResult(Event.Result.ALLOW);
         }
     }
 

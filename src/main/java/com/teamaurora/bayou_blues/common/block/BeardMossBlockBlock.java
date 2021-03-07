@@ -13,6 +13,7 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraftforge.common.IForgeShearable;
 
+@SuppressWarnings("deprecation")
 public class BeardMossBlockBlock extends Block implements IForgeShearable {
     public static final BooleanProperty PERSISTENT = BlockStateProperties.PERSISTENT;
 
@@ -40,5 +41,4 @@ public class BeardMossBlockBlock extends Block implements IForgeShearable {
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         super.fillStateContainer(builder.add(PERSISTENT));
     }
-
 }

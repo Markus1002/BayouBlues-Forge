@@ -27,6 +27,7 @@ import net.minecraft.world.server.ServerWorld;
 import javax.annotation.Nullable;
 import java.util.Random;
 
+@SuppressWarnings("deprecation")
 public class CypressBranchBlock extends Block implements IGrowable {
     public static final IntegerProperty AGE = BlockStateProperties.AGE_0_2;
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
@@ -58,6 +59,7 @@ public class CypressBranchBlock extends Block implements IGrowable {
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         switch (state.get(FACING)) {
+            default:
             case NORTH:
                 return SHAPE_NORTH;
             case EAST:
@@ -67,7 +69,6 @@ public class CypressBranchBlock extends Block implements IGrowable {
             case WEST:
                 return SHAPE_WEST;
         }
-        return null;
     }
 
     @Override
@@ -88,6 +89,7 @@ public class CypressBranchBlock extends Block implements IGrowable {
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         int i = state.get(AGE);
         boolean flag = i == 2;
+
         if (!flag && player.getHeldItem(handIn).getItem() == Items.BONE_MEAL) {
             return ActionResultType.PASS;
         } else if (i > 1) {

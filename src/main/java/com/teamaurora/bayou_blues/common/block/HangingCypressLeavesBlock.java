@@ -15,6 +15,7 @@ import net.minecraftforge.common.IForgeShearable;
 
 import javax.annotation.Nullable;
 
+@SuppressWarnings("deprecation")
 public class HangingCypressLeavesBlock extends Block implements IForgeShearable {
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(1.0, 4.0, 1.0, 15.0, 16.0, 15.0);
 

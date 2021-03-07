@@ -27,6 +27,9 @@ public class BayouBluesBiomeFeatures {
     public static void addFeatures(BiomeLoadingEvent event) {
         ResourceLocation biomeName = event.getName();
 
+        if (biomeName == null)
+            return;
+
         if (DataUtil.matchesKeys(biomeName, BayouBluesBiomes.BAYOU.getKey(), BayouBluesBiomes.BAYOU_HILLS.getKey())) {
             withBayouFeatures(event.getGeneration(), event.getSpawns());
         } else if (DataUtil.matchesKeys(biomeName, Biomes.SWAMP, Biomes.SWAMP_HILLS)) {

@@ -18,18 +18,11 @@ public class AlgaeItem extends BlockItem {
         super(blockIn, builder);
     }
 
-    /**
-     * Called when this item is used when targeting a Block
-     */
     @Override
     public ActionResultType onItemUse(ItemUseContext context) {
         return ActionResultType.PASS;
     }
 
-    /**
-     * Called to trigger the item's "innate" right click behavior. To handle when this item is used on a Block, see
-     * {@link #onItemUse}.
-     */
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         BlockRayTraceResult blockraytraceresult = rayTrace(worldIn, playerIn, RayTraceContext.FluidMode.SOURCE_ONLY);
