@@ -1,0 +1,24 @@
+{
+  "advancement": "environmental:adventure/find_natural_slabfish",
+  "modifiers": [
+    {
+      "type": "criteria",
+      "config": {
+        "mode": "modify",
+        "criteria": {
+          "bayou_blues:bayou": {
+            "trigger": "environmental:slabfish",
+            "conditions": {
+              "slabfish": "bayou_blues:bayou"
+            }
+          }
+        },
+        "requirements": [
+          [
+            "bayou_blues:bayou"
+          ]
+        ]
+      }
+    }
+  ]
+}
