@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.teamaurora.bayou_blues.common.world.gen.feature.*;
 import com.teamaurora.bayou_blues.common.world.gen.treedecorator.*;
 import com.teamaurora.bayou_blues.core.BayouBlues;
+import com.teamaurora.bayou_blues.core.compatibility.Environmental;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.ResourceLocation;
@@ -72,6 +73,9 @@ public class BayouBluesFeatures {
         public static final BlockState FERN = Blocks.FERN.getDefaultState();
         public static final BlockState LARGE_FERN = Blocks.LARGE_FERN.getDefaultState();
         public static final BlockState GIANT_FERN = BayouBluesBlocks.GIANT_FERN.get().getDefaultState();
+
+        public static final BlockState GIANT_TALL_GRASS = Environmental.installed() ? Environmental.GIANT_TALL_GRASS.getDefaultState() : Blocks.AIR.getDefaultState();
+        public static final BlockState MUD = Environmental.installed() ? Environmental.MUD.getDefaultState() : Blocks.AIR.getDefaultState();
     }
 
     public static final class Configs {
@@ -134,6 +138,8 @@ public class BayouBluesFeatures {
         public static final BlockClusterFeatureConfig FERN_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockStates.FERN), SimpleBlockPlacer.PLACER)).tries(80).func_227317_b_().build();
         public static final BlockClusterFeatureConfig LARGE_FERN_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockStates.LARGE_FERN), new DoublePlantBlockPlacer())).xSpread(7).zSpread(7).tries(110).func_227317_b_().build();
         public static final BlockClusterFeatureConfig GIANT_FERN_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockStates.GIANT_FERN), new DoublePlantBlockPlacer())).tries(110).func_227317_b_().build();
+
+        public static final BlockClusterFeatureConfig GIANT_TALL_GRASS_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BlockStates.GIANT_TALL_GRASS), new DoublePlantBlockPlacer())).tries(256).func_227317_b_().build();
     }
 
     public static final class Configured {
@@ -164,6 +170,11 @@ public class BayouBluesFeatures {
         public static final ConfiguredFeature<?, ?> PATCH_LILY_COOL = Feature.RANDOM_PATCH.withConfiguration(Configs.PATCH_LILY_COOL_CONFIG).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.CHANCE.configure(new ChanceConfig(4)));
         public static final ConfiguredFeature<?, ?> PATCH_LILY_NEUTRAL = Feature.RANDOM_PATCH.withConfiguration(Configs.PATCH_LILY_NEUTRAL_CONFIG).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.CHANCE.configure(new ChanceConfig(4)));
         public static final ConfiguredFeature<?, ?> PATCH_LILY_WARM = Feature.RANDOM_PATCH.withConfiguration(Configs.PATCH_LILY_WARM_CONFIG).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.CHANCE.configure(new ChanceConfig(4)));
+
+        // Environmental compat - original code by Team Abnormals, I just had to copy it here since ObjectHolders cannot get ConfiguredFeatures for some reason
+        public static final ConfiguredFeature<?, ?> PATCH_CATTAILS = Environmental.installed() ? Environmental.CATTAILS.withConfiguration(new NoFeatureConfig()).withPlacement(Features.Placements.PATCH_PLACEMENT.func_242731_b((12))) : Features.PATCH_DEAD_BUSH; // These dead bushes should never spawn
+        public static final ConfiguredFeature<?, ?> PATCH_GIANT_TALL_GRASS_BAYOU = Feature.RANDOM_PATCH.withConfiguration(Configs.GIANT_TALL_GRASS_CONFIG).withPlacement(Features.Placements.VEGETATION_PLACEMENT).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).func_242731_b(3);
+        public static final ConfiguredFeature<?, ?> DISK_MUD = Feature.DISK.withConfiguration(new SphereReplaceConfig(BlockStates.MUD, FeatureSpread.func_242253_a(4, 1), 1, ImmutableList.of(Blocks.DIRT.getDefaultState(), Blocks.GRASS_BLOCK.getDefaultState(), BlockStates.MUD))).withPlacement(Features.Placements.SEAGRASS_DISK_PLACEMENT);
 
         private static <FC extends IFeatureConfig> void register(String name, ConfiguredFeature<FC, ?> configuredFeature) {
             Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, new ResourceLocation(BayouBlues.MODID, name), configuredFeature);
@@ -197,6 +208,10 @@ public class BayouBluesFeatures {
             register("patch_lily_cool", PATCH_LILY_COOL);
             register("patch_lily_neutral", PATCH_LILY_NEUTRAL);
             register("patch_lily_warm", PATCH_LILY_WARM);
+
+            register("disk_mud", DISK_MUD);
+            register("patch_giant_tall_grass_bayou", PATCH_GIANT_TALL_GRASS_BAYOU);
+            register("patch_cattails", PATCH_CATTAILS);
         }
     }
 }

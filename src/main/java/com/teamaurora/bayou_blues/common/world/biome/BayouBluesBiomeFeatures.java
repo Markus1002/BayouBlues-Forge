@@ -3,6 +3,7 @@ package com.teamaurora.bayou_blues.common.world.biome;
 import com.minecraftabnormals.abnormals_core.core.util.DataUtil;
 import com.teamaurora.bayou_blues.core.BayouBlues;
 import com.teamaurora.bayou_blues.core.BayouBluesConfig;
+import com.teamaurora.bayou_blues.core.compatibility.Environmental;
 import com.teamaurora.bayou_blues.core.registry.BayouBluesBiomes;
 import com.teamaurora.bayou_blues.core.registry.BayouBluesFeatures;
 import net.minecraft.entity.EntityClassification;
@@ -54,6 +55,12 @@ public class BayouBluesBiomeFeatures {
         DefaultBiomeFeatures.withDisks(builder);
 
         builder.withFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, BayouBluesFeatures.Configured.PODZOL);
+
+        if (Environmental.installed()) {
+            builder.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, BayouBluesFeatures.Configured.DISK_MUD);
+            builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_GIANT_TALL_GRASS_BAYOU);
+            builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_CATTAILS);
+        }
 
         withBayouVegetation(builder);
 
