@@ -89,7 +89,7 @@ public class BeardMossBlock extends Block implements IGrowable {
     @Override
     public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
         if (worldIn.rand.nextInt(8) == 0 && worldIn.isAreaLoaded(pos, 4)) { // Forge: check area to prevent loading unloaded chunks
-            if (worldIn.isAirBlock(pos.down())) {
+            if (worldIn.isAirBlock(pos.down()) && worldIn.getBlockState(pos.up(3)).getBlock() != this) {
                 worldIn.setBlockState(pos.down(), this.getDefaultState());
             }
         }
