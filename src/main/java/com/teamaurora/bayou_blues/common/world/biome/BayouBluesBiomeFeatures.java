@@ -34,7 +34,7 @@ public class BayouBluesBiomeFeatures {
         if (DataUtil.matchesKeys(biomeName, BayouBluesBiomes.BAYOU.getKey(), BayouBluesBiomes.BAYOU_HILLS.getKey())) {
             withBayouFeatures(event.getGeneration(), event.getSpawns());
         } else if (DataUtil.matchesKeys(biomeName, Biomes.SWAMP, Biomes.SWAMP_HILLS)) {
-            withLilyFlowers(event.getGeneration());
+            withCoolLilyFlowers(event.getGeneration());
         } else if (biomeName.equals(new ResourceLocation("environmental","blossom_woods")) ||
                 biomeName.equals(new ResourceLocation("environmental","blossom_hills")) ||
                 biomeName.equals(new ResourceLocation("environmental","blossom_highlands")) ||
@@ -84,7 +84,7 @@ public class BayouBluesBiomeFeatures {
         builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BayouBluesFeatures.Configured.FALLEN_CYPRESS_LEAVES);
         builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.FLOWER_SWAMP);
         builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.PATCH_WATERLILLY);
-        withLilyFlowers(builder);
+        withAllLilyFlowers(builder);
         builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.BROWN_MUSHROOM_SWAMP);
         builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.RED_MUSHROOM_SWAMP);
     }
@@ -97,7 +97,7 @@ public class BayouBluesBiomeFeatures {
         builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LARGE_FERN);
     }
 
-    private static void withLilyFlowers(BiomeGenerationSettingsBuilder builder) {
+    private static void withAllLilyFlowers(BiomeGenerationSettingsBuilder builder) {
         if (BayouBluesConfig.COMMON.doLiliesSpawn.get()) {
             builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_COOL);
             builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_NEUTRAL);
@@ -106,6 +106,13 @@ public class BayouBluesBiomeFeatures {
     }
 
     private static void withWarmLilyFlowers(BiomeGenerationSettingsBuilder builder) {
+        if (BayouBluesConfig.COMMON.doLiliesSpawn.get()) {
+            builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_NEUTRAL);
+            builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_WARM);
+        }
+    }
+
+    private static void withCoolLilyFlowers(BiomeGenerationSettingsBuilder builder) {
         if (BayouBluesConfig.COMMON.doLiliesSpawn.get()) {
             builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_NEUTRAL);
             builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_WARM);
