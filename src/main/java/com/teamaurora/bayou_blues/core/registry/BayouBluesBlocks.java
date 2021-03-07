@@ -88,8 +88,8 @@ public class BayouBluesBlocks {
     public static final RegistryObject<Block> ALGAE_THATCH_VERTICAL_SLAB = HELPER.createCompatBlock("quark", "algae_thatch_vertical_slab", ()->new ThatchVerticalSlabBlock(Properties.ALGAE_THATCH), ItemGroup.BUILDING_BLOCKS);
 
     // other
-    public static final RegistryObject<Block> BEARD_MOSS_BLOCK = HELPER.createBlockNoItem("beard_moss_block", ()->new BeardMossBlockBlock(AbstractBlock.Properties.create(Material.PLANTS).hardnessAndResistance(0.1F).sound(SoundType.PLANT).notSolid()));
-    public static final RegistryObject<Block> BEARD_MOSS = HELPER.createBlockNoItem("beard_moss", ()->new BeardMossBlock(AbstractBlock.Properties.create(Material.PLANTS).zeroHardnessAndResistance().sound(SoundType.PLANT).notSolid().doesNotBlockMovement().tickRandomly()));
+    public static final RegistryObject<Block> BEARD_MOSS_BLOCK = HELPER.createFuelBlock("beard_moss_block", ()->new BeardMossBlockBlock(AbstractBlock.Properties.create(Material.PLANTS).hardnessAndResistance(0.1F).sound(SoundType.PLANT).notSolid()), 800, ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> BEARD_MOSS = HELPER.createFuelBlock("beard_moss", ()->new BeardMossBlock(AbstractBlock.Properties.create(Material.PLANTS).zeroHardnessAndResistance().sound(SoundType.PLANT).notSolid().doesNotBlockMovement().tickRandomly()), 800, ItemGroup.DECORATIONS);
     public static final RegistryObject<Block> GIANT_FERN = HELPER.createBlock("giant_fern", ()->new DoublePlantBlock(AbstractBlock.Properties.from(Blocks.TALL_GRASS)), ItemGroup.DECORATIONS);
 
     public static class Properties {

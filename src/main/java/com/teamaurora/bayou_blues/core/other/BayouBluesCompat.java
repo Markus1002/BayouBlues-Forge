@@ -19,8 +19,8 @@ public class BayouBluesCompat {
         DataUtil.registerCompostable(BayouBluesBlocks.ALGAE_THATCH_STAIRS.get(), 0.65F);
         DataUtil.registerCompostable(BayouBluesBlocks.ALGAE_THATCH_VERTICAL_SLAB.get(), 0.65F);
 
-        DataUtil.registerCompostable(BayouBluesItems.BEARD_MOSS.get(), 0.3F);
-        DataUtil.registerCompostable(BayouBluesItems.BEARD_MOSS_BLOCK.get(), 0.65F);
+        DataUtil.registerCompostable(BayouBluesBlocks.BEARD_MOSS.get(), 0.3F);
+        DataUtil.registerCompostable(BayouBluesBlocks.BEARD_MOSS_BLOCK.get(), 0.65F);
 
         DataUtil.registerCompostable(BayouBluesItems.BLUE_LILY.get(), 0.65F);
         DataUtil.registerCompostable(BayouBluesItems.LIGHT_BLUE_LILY.get(), 0.65F);
