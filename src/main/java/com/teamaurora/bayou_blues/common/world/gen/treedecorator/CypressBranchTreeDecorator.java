@@ -37,14 +37,7 @@ public class CypressBranchTreeDecorator extends TreeDecorator {
             if (rand.nextInt(25) == 0) {
                 Direction dir = Direction.byHorizontalIndex(rand.nextInt(4));
                 if (world.getBlockState(pos.offset(dir)).isAir()) {
-                    int i = 0;
-                    if (rand.nextInt(3) == 0) {
-                        i = 1;
-                        if (rand.nextInt(3) == 0) {
-                            i = 2;
-                        }
-                    }
-                    world.setBlockState(pos.offset(dir), BayouBluesBlocks.CYPRESS_BRANCH.get().getDefaultState().with(CypressBranchBlock.FACING, dir).with(CypressBranchBlock.AGE, i), 3);
+                    world.setBlockState(pos.offset(dir), BayouBluesBlocks.CYPRESS_BRANCH.get().getDefaultState().with(CypressBranchBlock.FACING, dir).with(CypressBranchBlock.AGE, 2), 3);
                 }
             }
         }
