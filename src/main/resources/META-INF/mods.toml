@@ -32,3 +32,10 @@ issueTrackerURL="https://github.com/teamauroramods/BayouBlues/issues"
     versionRange="[3.1.0,)"
     ordering="AFTER"
     side="BOTH"
+
+[[dependencies.bayou_blues]]
+    modId="environmental"
+    mandatory=false
+    versionRange="[1.0.0,)"
+    ordering="AFTER"
+    side="BOTH"

@@ -1,9 +1,9 @@
 package com.teamaurora.bayou_blues.common.world.biome;
 
 import com.minecraftabnormals.abnormals_core.core.util.DataUtil;
+import com.minecraftabnormals.environmental.core.registry.EnvironmentalFeatures;
 import com.teamaurora.bayou_blues.core.BayouBlues;
 import com.teamaurora.bayou_blues.core.BayouBluesConfig;
-import com.teamaurora.bayou_blues.core.compatibility.Environmental;
 import com.teamaurora.bayou_blues.core.registry.BayouBluesBiomes;
 import com.teamaurora.bayou_blues.core.registry.BayouBluesFeatures;
 import net.minecraft.entity.EntityClassification;
@@ -19,6 +19,7 @@ import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
 import net.minecraftforge.common.world.MobSpawnInfoBuilder;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = BayouBlues.MODID)
@@ -56,10 +57,10 @@ public class BayouBluesBiomeFeatures {
 
         builder.withFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, BayouBluesFeatures.Configured.PODZOL);
 
-        if (Environmental.installed()) {
-            builder.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, BayouBluesFeatures.Configured.DISK_MUD);
-            builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_GIANT_TALL_GRASS_BAYOU);
-            builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_CATTAILS);
+        if (ModList.get().isLoaded("environmental")) {
+            builder.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, EnvironmentalFeatures.Configured.DISK_MUD);
+            builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, EnvironmentalFeatures.Configured.PATCH_GIANT_TALL_GRASS_SAVANNA);
+            builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, EnvironmentalFeatures.Configured.PATCH_CATTAILS);
         }
 
         withBayouVegetation(builder);
