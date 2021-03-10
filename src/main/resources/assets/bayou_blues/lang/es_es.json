@@ -67,6 +67,15 @@
   "block.bayou_blues.purple_lily": "Lirio morado",
   "block.bayou_blues.white_lily": "Lirio blanco",
 
+  "block.bayou_blues.potted_blue_lily": "Maceta con lirio azul",
+  "block.bayou_blues.potted_light_gray_lily": "Maceta con lirio gris claro",
+  "block.bayou_blues.potted_cyan_lily": "Maceta con lirio cian",
+  "block.bayou_blues.potted_light_blue_lily": "Maceta con lirio azul claro",
+  "block.bayou_blues.potted_magenta_lily": "Maceta con lirio magenta",
+  "block.bayou_blues.potted_pink_lily": "Maceta con lirio rosa",
+  "block.bayou_blues.potted_purple_lily": "Maceta con lirio morado",
+  "block.bayou_blues.potted_white_lily": "Maceta con lirio blanco",
+
   "item.bayou_blues.blue_lily": "Lirio azul",
   "item.bayou_blues.light_gray_lily": "Lirio gris claro",
   "item.bayou_blues.cyan_lily": "Lirio cian",
