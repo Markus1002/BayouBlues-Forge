@@ -14,7 +14,7 @@
   "block.bayou_blues.cypress_trapdoor": "Кипаросвый люк",
   "block.bayou_blues.cypress_door": "Кипарисовая дверь",
   "block.bayou_blues.cypress_sign": "Кипарисовая табличка",
-  "block.bayou_blues.cypress_leaves": "Кипарисовая листва",
+  "block.bayou_blues.cypress_leaves": "Листва кипариса",
   "block.bayou_blues.cypress_sapling": "Саженец кипариса",
   "block.bayou_blues.cypress_leaf_carpet": "Кипарисовый лиственный ковер",
   "block.bayou_blues.cypress_bookshelf": "Кипарисовая книжная полка",
@@ -50,7 +50,7 @@
   "item.bayou_blues.gooseberry_jam_cookie": "Печенье с крыжовниковым вареньем",
 
 
-  "_comment2": "Биом и Слэбфиш",
+  "_comment2": "Биом и Плиторыб",
   "biome.bayou_blues.bayou": "Байу",
   "biome.bayou_blues.bayou_hills": "Холмы Байу",
 
@@ -89,9 +89,9 @@
   "_comment4": "Другие растения",
   "block.bayou_blues.algae": "Водоросли",
   "block.bayou_blues.algae_thatch": "Солома из водорослей",
-  "block.bayou_blues.algae_thatch_slab": "Соломенные полублоки из водорослей",
+  "block.bayou_blues.algae_thatch_slab": "Соломенная плита из водорослей",
   "block.bayou_blues.algae_thatch_stairs": "Соломенные ступеньки из водорослей",
-  "block.bayou_blues.algae_thatch_vertical_slab": "Вертикальные полублоки из водорослей",
+  "block.bayou_blues.algae_thatch_vertical_slab": "Вертикальная плита из водорослей",
 
   "block.bayou_blues.beard_moss_block": "Блок бородатого мха",
   "block.bayou_blues.beard_moss": "Бородатый мох",
