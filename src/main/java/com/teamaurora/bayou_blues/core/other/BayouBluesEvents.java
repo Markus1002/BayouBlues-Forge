@@ -114,7 +114,8 @@ public class BayouBluesEvents {
                 new TradeUtil.AbnormalsTrade(1, BayouBluesItems.PURPLE_LILY.get(), 1, 7, 1),
                 new TradeUtil.AbnormalsTrade(1, BayouBluesItems.MAGENTA_LILY.get(), 1, 7, 1),
 
-                new TradeUtil.AbnormalsTrade(5, BayouBluesBlocks.CYPRESS_SAPLING.get().asItem(), 1, 8, 1));
+                new TradeUtil.AbnormalsTrade(5, BayouBluesBlocks.CYPRESS_SAPLING.get().asItem(), 1, 8, 1)
+        );
     }
 
     @SubscribeEvent
