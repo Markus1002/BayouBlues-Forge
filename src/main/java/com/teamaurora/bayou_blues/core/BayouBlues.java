@@ -32,8 +32,6 @@ public class BayouBlues
 
         eventBus.addListener(this::commonSetup);
 
-        MinecraftForge.EVENT_BUS.register(new BayouBluesEvents());
-
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, BayouBluesConfig.COMMON_SPEC);
     }
 
