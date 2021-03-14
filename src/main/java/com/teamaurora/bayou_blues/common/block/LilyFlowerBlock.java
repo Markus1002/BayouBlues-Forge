@@ -1,9 +1,7 @@
 package com.teamaurora.bayou_blues.common.block;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.BushBlock;
+import com.minecraftabnormals.abnormals_core.common.blocks.AbnormalsFlowerBlock;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.BoatEntity;
@@ -11,6 +9,7 @@ import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -27,7 +26,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.function.Supplier;
 
-public class LilyFlowerBlock extends BushBlock {
+public class LilyFlowerBlock extends AbnormalsFlowerBlock {
     protected static final VoxelShape LILY_PAD_AABB = Block.makeCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 1.5D, 15.0D);
     protected static final VoxelShape LILY_FLOWER_AABB = Block.makeCuboidShape(3.0D, 1.5D, 3.0D, 13.0D, 13.D, 13.0D);
     protected static final VoxelShape SHAPE = VoxelShapes.or(LILY_PAD_AABB, LILY_FLOWER_AABB);
@@ -36,7 +35,7 @@ public class LilyFlowerBlock extends BushBlock {
     public static List<LilyFlowerBlock> LILY_FLOWERS = new ArrayList<>();
 
     public LilyFlowerBlock(Supplier<Item> item, Properties builder) {
-        super(builder);
+        super(()->Effects.POISON, 12, builder);
         this.item = item;
         LILY_FLOWERS.add(this);
     }
@@ -90,5 +89,10 @@ public class LilyFlowerBlock extends BushBlock {
         FluidState fluidstate = worldIn.getFluidState(pos);
         FluidState fluidstate1 = worldIn.getFluidState(pos.up());
         return (fluidstate.getFluid() == Fluids.WATER || state.getMaterial() == Material.ICE) && fluidstate1.getFluid() == Fluids.EMPTY;
+    }
+
+    @Override
+    public AbstractBlock.OffsetType getOffsetType() {
+        return OffsetType.NONE;
     }
 }
