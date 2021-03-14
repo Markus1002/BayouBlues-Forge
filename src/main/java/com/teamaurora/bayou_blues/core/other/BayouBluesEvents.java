@@ -105,17 +105,22 @@ public class BayouBluesEvents {
         TradeUtil.addWandererTrades(event,
                 new TradeUtil.AbnormalsTrade(1, BayouBluesItems.ALGAE.get(), 2, 6, 1),
 
-                new TradeUtil.AbnormalsTrade(1, BayouBluesItems.BLUE_LILY.get(), 1, 7, 1),
-                new TradeUtil.AbnormalsTrade(1, BayouBluesItems.CYAN_LILY.get(), 1, 7, 1),
-                new TradeUtil.AbnormalsTrade(1, BayouBluesItems.LIGHT_BLUE_LILY.get(), 1, 7, 1),
-                new TradeUtil.AbnormalsTrade(1, BayouBluesItems.LIGHT_GRAY_LILY.get(), 1, 7, 1),
-                new TradeUtil.AbnormalsTrade(1, BayouBluesItems.WHITE_LILY.get(), 1, 7, 1),
-                new TradeUtil.AbnormalsTrade(1, BayouBluesItems.PINK_LILY.get(), 1, 7, 1),
-                new TradeUtil.AbnormalsTrade(1, BayouBluesItems.PURPLE_LILY.get(), 1, 7, 1),
-                new TradeUtil.AbnormalsTrade(1, BayouBluesItems.MAGENTA_LILY.get(), 1, 7, 1),
-
                 new TradeUtil.AbnormalsTrade(5, BayouBluesBlocks.CYPRESS_SAPLING.get().asItem(), 1, 8, 1)
         );
+
+        if (BayouBluesConfig.COMMON.doLiliesSpawn.get() || BayouBluesConfig.COMMON.lilyBonemealBehavior.get() != 0) {
+            // lilies are enabled
+            TradeUtil.addWandererTrades(event,
+                    new TradeUtil.AbnormalsTrade(1, BayouBluesItems.BLUE_LILY.get(), 1, 7, 1),
+                    new TradeUtil.AbnormalsTrade(1, BayouBluesItems.CYAN_LILY.get(), 1, 7, 1),
+                    new TradeUtil.AbnormalsTrade(1, BayouBluesItems.LIGHT_BLUE_LILY.get(), 1, 7, 1),
+                    new TradeUtil.AbnormalsTrade(1, BayouBluesItems.LIGHT_GRAY_LILY.get(), 1, 7, 1),
+                    new TradeUtil.AbnormalsTrade(1, BayouBluesItems.WHITE_LILY.get(), 1, 7, 1),
+                    new TradeUtil.AbnormalsTrade(1, BayouBluesItems.PINK_LILY.get(), 1, 7, 1),
+                    new TradeUtil.AbnormalsTrade(1, BayouBluesItems.PURPLE_LILY.get(), 1, 7, 1),
+                    new TradeUtil.AbnormalsTrade(1, BayouBluesItems.MAGENTA_LILY.get(), 1, 7, 1)
+            );
+        }
     }
 
     @SubscribeEvent
