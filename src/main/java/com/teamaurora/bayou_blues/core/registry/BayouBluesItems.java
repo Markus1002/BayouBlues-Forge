@@ -4,6 +4,7 @@ import com.minecraftabnormals.abnormals_core.core.util.registry.ItemSubRegistryH
 import com.teamaurora.bayou_blues.common.item.*;
 import com.teamaurora.bayou_blues.core.BayouBlues;
 import net.minecraft.item.*;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 
@@ -19,7 +20,7 @@ public class BayouBluesItems {
 
     public static final RegistryObject<Item> HONEY_GLAZED_GOOSEBERRIES = HELPER.createItem("honey_glazed_gooseberries", ()->new Item(new Item.Properties().food(Foods.HONEY_GLAZED_GOOSEBERRIES).group(ItemGroup.FOOD)));
     public static final RegistryObject<Item> GOOSEBERRY_JAM = HELPER.createItem("gooseberry_jam", ()->new JamItem(new Item.Properties().containerItem(Items.GLASS_BOTTLE).food(Foods.GOOSEBERRY_JAM).maxStackSize(16).group(ItemGroup.FOOD)));
-    public static final RegistryObject<Item> GOOSEBERRY_JAM_COOKIE = HELPER.createItem("gooseberry_jam_cookie", ()->new Item(new Item.Properties().food(Foods.GOOSEBERRY_JAM_COOKIE).group(ItemGroup.FOOD)));
+    public static final RegistryObject<Item> GOOSEBERRY_JAM_COOKIE = HELPER.createItem("gooseberry_jam_cookie", ()->new Item(new Item.Properties().food(ModList.get().isLoaded("farmersdelight") ? Foods.GOOSEBERRY_JAM_COOKIE_FAST : Foods.GOOSEBERRY_JAM_COOKIE).group(ItemGroup.FOOD)));
 
     public static final RegistryObject<Item> ALGAE = HELPER.createItem("algae", ()->new AlgaeItem(BayouBluesBlocks.ALGAE.get(), new Item.Properties().group(ItemGroup.DECORATIONS)));
 
@@ -40,5 +41,6 @@ public class BayouBluesItems {
         public static final Food HONEY_GLAZED_GOOSEBERRIES = (new Food.Builder()).hunger(7).saturation(0.3F).build();
         public static final Food GOOSEBERRY_JAM = (new Food.Builder()).hunger(2).saturation(0.25F).build();
         public static final Food GOOSEBERRY_JAM_COOKIE = (new Food.Builder().hunger(2).saturation(0.3F)).build();
+        public static final Food GOOSEBERRY_JAM_COOKIE_FAST = (new Food.Builder().hunger(2).saturation(0.3F).fastToEat()).build();
     }
 }
