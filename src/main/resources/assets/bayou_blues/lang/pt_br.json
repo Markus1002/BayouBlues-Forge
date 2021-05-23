@@ -78,11 +78,11 @@
 
 
   "_comment4": "Other Vegetation",
-  "block.bayou_blues.algae": "Tapete algal",
-  "block.bayou_blues.algae_thatch": "Revestimento algal",
-  "block.bayou_blues.algae_thatch_slab": "Laje de revestimento algal",
-  "block.bayou_blues.algae_thatch_stairs": "Escadas de revestimento algal",
-  "block.bayou_blues.algae_thatch_vertical_slab": "Laje vertical de revestimento algal",
+  "block.bayou_blues.algae": "Macroalgas",
+  "block.bayou_blues.algae_thatch": "Sapé de macroalgas",
+  "block.bayou_blues.algae_thatch_slab": "Laje de sapé de macroalgas",
+  "block.bayou_blues.algae_thatch_stairs": "Escadas de sapé de macroalgas",
+  "block.bayou_blues.algae_thatch_vertical_slab": "Laje vertical de sapé de macroalgas",
 
   "block.bayou_blues.beard_moss_block": "Bloco de barba-de-velho",
   "block.bayou_blues.beard_moss": "Barba-de-velho",
