@@ -79,10 +79,10 @@
 
   "_comment4": "Other Vegetation",
   "block.bayou_blues.algae": "Macroalgas",
-  "block.bayou_blues.algae_thatch": "Sapé de macroalgas",
-  "block.bayou_blues.algae_thatch_slab": "Laje de sapé de macroalgas",
-  "block.bayou_blues.algae_thatch_stairs": "Escadas de sapé de macroalgas",
-  "block.bayou_blues.algae_thatch_vertical_slab": "Laje vertical de sapé de macroalgas",
+  "block.bayou_blues.algae_thatch": "Colmo de macroalgas",
+  "block.bayou_blues.algae_thatch_slab": "Laje de colmo de macroalgas",
+  "block.bayou_blues.algae_thatch_stairs": "Escadas de colmo de macroalgas",
+  "block.bayou_blues.algae_thatch_vertical_slab": "Laje vertical de colmo de macroalgas",
 
   "block.bayou_blues.beard_moss_block": "Bloco de barba-de-velho",
   "block.bayou_blues.beard_moss": "Barba-de-velho",
