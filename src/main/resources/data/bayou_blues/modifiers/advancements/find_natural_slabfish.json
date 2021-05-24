@@ -3,6 +3,12 @@
   "modifiers": [
     {
       "type": "criteria",
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "environmental"
+        }
+      ],
       "config": {
         "mode": "modify",
         "criteria": {
