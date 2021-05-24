@@ -1,8 +1,8 @@
 {
   "_comment": "Cyprys",
-  "block.bayou_blues.stripped_cypress_log": "Okorowany Cyprysowy pień",
+  "block.bayou_blues.stripped_cypress_log": "Okorowany cyprysowy pień",
   "block.bayou_blues.cypress_log": "Cyprysowy pień",
-  "block.bayou_blues.stripped_cypress_wood": "Okorowane cyprysow drewno",
+  "block.bayou_blues.stripped_cypress_wood": "Okorowane cyprysowe drewno",
   "block.bayou_blues.cypress_wood": "Cyprysowe drewno",
   "block.bayou_blues.cypress_planks": "Cyprysowe deski",
   "block.bayou_blues.cypress_slab": "Cyprysowa płyta",
@@ -40,7 +40,7 @@
   "_comment1": "Agrest",
   "item.bayou_blues.gooseberries": "Agrest",
   "item.bayou_blues.gooseberry_juice": "Sok agrestowy",
-  "item.bayou_blues.gooseberry_pie": "Agrestowy placek",
+  "item.bayou_blues.gooseberry_pie": "Placek agrestowy",
 
   "block.bayou_blues.cypress_branch": "Cyprysowa gałąź",
   "block.bayou_blues.gooseberry_sack": "Wór agrestu",
