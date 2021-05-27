@@ -31,37 +31,37 @@ public class BayouBluesBlocks {
     public static final BlockSubRegistryHelper HELPER = BayouBlues.REGISTRY_HELPER.getBlockSubHelper();
 
     // cypress
-    public static final RegistryObject<Block> STRIPPED_CYPRESS_LOG = HELPER.createBlock("stripped_cypress_log", ()->new StrippedLogBlock(Block.Properties.from(Blocks.STRIPPED_OAK_LOG)), ItemGroup.BUILDING_BLOCKS);
-    public static final RegistryObject<Block> STRIPPED_CYPRESS_WOOD = HELPER.createBlock("stripped_cypress_wood", ()->new StrippedWoodBlock(Block.Properties.from(Blocks.STRIPPED_OAK_WOOD)), ItemGroup.BUILDING_BLOCKS);
-    public static final RegistryObject<Block> CYPRESS_LOG= HELPER.createBlock("cypress_log", ()->new AbnormalsLogBlock(STRIPPED_CYPRESS_LOG, Block.Properties.from(Blocks.OAK_LOG)), ItemGroup.BUILDING_BLOCKS);
-    public static final RegistryObject<Block> CYPRESS_WOOD = HELPER.createBlock("cypress_wood", ()->new WoodBlock(STRIPPED_CYPRESS_WOOD, Block.Properties.from(Blocks.OAK_WOOD)), ItemGroup.BUILDING_BLOCKS);
-    public static final RegistryObject<Block> CYPRESS_LEAVES = HELPER.createBlock("cypress_leaves", ()->new AbnormalsLeavesBlock(AbstractBlock.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT).notSolid().setAllowsSpawn((BlockState state, IBlockReader reader, BlockPos pos, EntityType<?> entity)->(entity == EntityType.OCELOT || entity == EntityType.PARROT)).setSuffocates((BlockState state, IBlockReader reader, BlockPos pos)->false).setBlocksVision((BlockState state, IBlockReader reader, BlockPos pos)->false)), ItemGroup.DECORATIONS);
-    public static final RegistryObject<Block> CYPRESS_SAPLING = HELPER.createBlock("cypress_sapling", ()->new AbnormalsSaplingBlock(new CypressTree(), Block.Properties.from(Blocks.OAK_SAPLING)), ItemGroup.DECORATIONS);
-    public static final RegistryObject<Block> POTTED_CYPRESS_SAPLING = HELPER.createBlockNoItem("potted_cypress_sapling", ()->new FlowerPotBlock(CYPRESS_SAPLING.get(), Block.Properties.from(Blocks.POTTED_ALLIUM)));
-    public static final RegistryObject<Block> CYPRESS_PLANKS = HELPER.createBlock("cypress_planks", ()->new PlanksBlock(Block.Properties.from(Blocks.OAK_PLANKS)), ItemGroup.BUILDING_BLOCKS);
-    public static final RegistryObject<Block> CYPRESS_SLAB = HELPER.createBlock("cypress_slab", ()->new WoodSlabBlock(Block.Properties.from(Blocks.OAK_SLAB)), ItemGroup.BUILDING_BLOCKS);
-    public static final RegistryObject<Block> CYPRESS_STAIRS = HELPER.createBlock("cypress_stairs", ()->new WoodStairsBlock(CYPRESS_PLANKS.get().getDefaultState(), Block.Properties.from(Blocks.OAK_STAIRS)), ItemGroup.BUILDING_BLOCKS);
-    public static final RegistryObject<Block> CYPRESS_PRESSURE_PLATE = HELPER.createBlock("cypress_pressure_plate", ()->new WoodPressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.from(Blocks.OAK_PRESSURE_PLATE)), ItemGroup.REDSTONE);
-    public static final RegistryObject<Block> CYPRESS_FENCE = HELPER.createFuelBlock("cypress_fence", ()->new WoodFenceBlock(Block.Properties.from(Blocks.OAK_FENCE)), 300, ItemGroup.DECORATIONS);
-    public static final RegistryObject<Block> CYPRESS_FENCE_GATE = HELPER.createFuelBlock("cypress_fence_gate", ()->new WoodFenceGateBlock(Block.Properties.from(Blocks.OAK_FENCE_GATE)), 300, ItemGroup.REDSTONE);
-    public static final RegistryObject<Block> CYPRESS_BUTTON = HELPER.createBlock("cypress_button", ()->new AbnormalsWoodButtonBlock(Block.Properties.from(Blocks.OAK_BUTTON)), ItemGroup.REDSTONE);
-    public static final RegistryObject<Block> CYPRESS_DOOR = HELPER.createBlock("cypress_door", ()->new WoodDoorBlock(Block.Properties.from(Blocks.OAK_DOOR)), ItemGroup.REDSTONE);
-    public static final RegistryObject<Block> CYPRESS_TRAPDOOR = HELPER.createBlock("cypress_trapdoor", ()->new WoodTrapDoorBlock(Block.Properties.from(Blocks.OAK_TRAPDOOR)), ItemGroup.REDSTONE);
+    public static final RegistryObject<Block> STRIPPED_CYPRESS_LOG = HELPER.createBlock("stripped_cypress_log", ()->new StrippedLogBlock(Properties.LOG), ItemGroup.BUILDING_BLOCKS);
+    public static final RegistryObject<Block> STRIPPED_CYPRESS_WOOD = HELPER.createBlock("stripped_cypress_wood", ()->new StrippedWoodBlock(Properties.LOG), ItemGroup.BUILDING_BLOCKS);
+    public static final RegistryObject<Block> CYPRESS_LOG = HELPER.createBlock("cypress_log", ()->new AbnormalsLogBlock(STRIPPED_CYPRESS_LOG, Properties.LOG), ItemGroup.BUILDING_BLOCKS);
+    public static final RegistryObject<Block> CYPRESS_WOOD = HELPER.createBlock("cypress_wood", ()->new WoodBlock(STRIPPED_CYPRESS_WOOD, Properties.LOG), ItemGroup.BUILDING_BLOCKS);
+    public static final RegistryObject<Block> CYPRESS_LEAVES = HELPER.createBlock("cypress_leaves", ()->new AbnormalsLeavesBlock(Properties.CYPRESS_LEAVES), ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> CYPRESS_SAPLING = HELPER.createBlock("cypress_sapling", ()->new AbnormalsSaplingBlock(new CypressTree(), Properties.SAPLING), ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> POTTED_CYPRESS_SAPLING = HELPER.createBlockNoItem("potted_cypress_sapling", ()->new FlowerPotBlock(CYPRESS_SAPLING.get(), Properties.FLOWER_POT));
+    public static final RegistryObject<Block> CYPRESS_PLANKS = HELPER.createBlock("cypress_planks", ()->new PlanksBlock(Properties.PLANKS), ItemGroup.BUILDING_BLOCKS);
+    public static final RegistryObject<Block> CYPRESS_SLAB = HELPER.createBlock("cypress_slab", ()->new WoodSlabBlock(Properties.PLANKS), ItemGroup.BUILDING_BLOCKS);
+    public static final RegistryObject<Block> CYPRESS_STAIRS = HELPER.createBlock("cypress_stairs", ()->new WoodStairsBlock(CYPRESS_PLANKS.get().getDefaultState(), Properties.PLANKS), ItemGroup.BUILDING_BLOCKS);
+    public static final RegistryObject<Block> CYPRESS_PRESSURE_PLATE = HELPER.createBlock("cypress_pressure_plate", ()->new WoodPressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Properties.PRESSURE_PLATE), ItemGroup.REDSTONE);
+    public static final RegistryObject<Block> CYPRESS_FENCE = HELPER.createFuelBlock("cypress_fence", ()->new WoodFenceBlock(Properties.PLANKS), 300, ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> CYPRESS_FENCE_GATE = HELPER.createFuelBlock("cypress_fence_gate", ()->new WoodFenceGateBlock(Properties.PLANKS), 300, ItemGroup.REDSTONE);
+    public static final RegistryObject<Block> CYPRESS_BUTTON = HELPER.createBlock("cypress_button", ()->new AbnormalsWoodButtonBlock(Properties.BUTTON), ItemGroup.REDSTONE);
+    public static final RegistryObject<Block> CYPRESS_DOOR = HELPER.createBlock("cypress_door", ()->new WoodDoorBlock(Properties.DOOR), ItemGroup.REDSTONE);
+    public static final RegistryObject<Block> CYPRESS_TRAPDOOR = HELPER.createBlock("cypress_trapdoor", ()->new WoodTrapDoorBlock(Properties.DOOR), ItemGroup.REDSTONE);
     public static final Pair<RegistryObject<AbnormalsStandingSignBlock>, RegistryObject<AbnormalsWallSignBlock>> CYPRESS_SIGNS = HELPER.createSignBlock("cypress", MaterialColor.PURPLE_TERRACOTTA);
 
-    public static final RegistryObject<Block> CYPRESS_BOOKSHELF = HELPER.createCompatFuelBlock("quark", "cypress_bookshelf", ()->new BookshelfBlock(Block.Properties.from(Blocks.BOOKSHELF)), 300, ItemGroup.BUILDING_BLOCKS);
-    public static final RegistryObject<Block> VERTICAL_CYPRESS_PLANKS = HELPER.createCompatBlock("quark", "vertical_cypress_planks", ()->new Block(Block.Properties.from(Blocks.OAK_PLANKS)), ItemGroup.BUILDING_BLOCKS);
-    public static final RegistryObject<Block> CYPRESS_VERTICAL_SLAB = HELPER.createCompatFuelBlock("quark", "cypress_vertical_slab", ()->new VerticalSlabBlock(Block.Properties.from(Blocks.OAK_PLANKS)), 150, ItemGroup.BUILDING_BLOCKS);
-    public static final RegistryObject<Block> CYPRESS_LADDER = HELPER.createCompatFuelBlock("quark", "cypress_ladder", ()->new AbnormalsLadderBlock(Block.Properties.from(Blocks.LADDER).harvestTool(ToolType.AXE)), 300, ItemGroup.DECORATIONS);
-    public static final RegistryObject<Block> CYPRESS_LEAF_CARPET = HELPER.createBlock("cypress_leaf_carpet", ()->new LeafCarpetBlock(Block.Properties.from(CYPRESS_LEAVES.get())), ItemGroup.DECORATIONS);
-    public static final RegistryObject<Block> STRIPPED_CYPRESS_POST = HELPER.createCompatFuelBlock("quark", "stripped_cypress_post", () -> new WoodPostBlock(AbstractBlock.Properties.from(Blocks.OAK_FENCE)), 300, ItemGroup.BUILDING_BLOCKS);
-    public static final RegistryObject<Block> CYPRESS_POST = HELPER.createCompatFuelBlock("quark", "cypress_post", () -> new WoodPostBlock(STRIPPED_CYPRESS_POST, AbstractBlock.Properties.from(Blocks.OAK_FENCE)), 300, ItemGroup.BUILDING_BLOCKS);
-    public static final RegistryObject<Block> CYPRESS_HEDGE = HELPER.createCompatFuelBlock("quark", "cypress_hedge", () -> new HedgeBlock(AbstractBlock.Properties.from(Blocks.OAK_FENCE)), 300, ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> CYPRESS_BOOKSHELF = HELPER.createCompatFuelBlock("quark", "cypress_bookshelf", ()->new BookshelfBlock(Properties.BOOKSHELF), 300, ItemGroup.BUILDING_BLOCKS);
+    public static final RegistryObject<Block> VERTICAL_CYPRESS_PLANKS = HELPER.createCompatBlock("quark", "vertical_cypress_planks", ()->new Block(Properties.PLANKS), ItemGroup.BUILDING_BLOCKS);
+    public static final RegistryObject<Block> CYPRESS_VERTICAL_SLAB = HELPER.createCompatFuelBlock("quark", "cypress_vertical_slab", ()->new VerticalSlabBlock(Properties.PLANKS), 150, ItemGroup.BUILDING_BLOCKS);
+    public static final RegistryObject<Block> CYPRESS_LADDER = HELPER.createCompatFuelBlock("quark", "cypress_ladder", ()->new AbnormalsLadderBlock(Properties.LADDER), 300, ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> CYPRESS_LEAF_CARPET = HELPER.createBlock("cypress_leaf_carpet", ()->new LeafCarpetBlock(Properties.CYPRESS_CARPET), ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> STRIPPED_CYPRESS_POST = HELPER.createCompatFuelBlock("quark", "stripped_cypress_post", () -> new WoodPostBlock(Properties.PLANKS), 300, ItemGroup.BUILDING_BLOCKS);
+    public static final RegistryObject<Block> CYPRESS_POST = HELPER.createCompatFuelBlock("quark", "cypress_post", () -> new WoodPostBlock(STRIPPED_CYPRESS_POST, Properties.PLANKS), 300, ItemGroup.BUILDING_BLOCKS);
+    public static final RegistryObject<Block> CYPRESS_HEDGE = HELPER.createCompatFuelBlock("quark", "cypress_hedge", () -> new HedgeBlock(Properties.HEDGE), 300, ItemGroup.DECORATIONS);
     public static final Pair<RegistryObject<AbnormalsChestBlock>, RegistryObject<AbnormalsTrappedChestBlock>> CYPRESS_CHESTS = HELPER.createCompatChestBlocks("cypress", MaterialColor.PURPLE_TERRACOTTA);
 
-    public static final RegistryObject<Block> CYPRESS_BEEHIVE = HELPER.createCompatBlock("buzzier_bees", "cypress_beehive", ()->new AbnormalsBeehiveBlock(Block.Properties.from(Blocks.BEEHIVE)), ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> CYPRESS_BEEHIVE = HELPER.createCompatBlock("buzzier_bees", "cypress_beehive", ()->new AbnormalsBeehiveBlock(AbstractBlock.Properties.from(Blocks.BEEHIVE)), ItemGroup.DECORATIONS);
 
-    public static final RegistryObject<Block> HANGING_CYPRESS_LEAVES = HELPER.createBlock("hanging_cypress_leaves", ()->new HangingCypressLeavesBlock(Block.Properties.from(Blocks.OAK_LEAVES)), ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> HANGING_CYPRESS_LEAVES = HELPER.createBlock("hanging_cypress_leaves", ()->new HangingCypressLeavesBlock(Properties.CYPRESS_LEAVES), ItemGroup.DECORATIONS);
 
     public static final RegistryObject<Block> CYPRESS_KNEE = HELPER.createBlock("cypress_knee", ()->new CypressKneeBlock(AbstractBlock.Properties.create(Material.WOOD, MaterialColor.BROWN).hardnessAndResistance(2.0F).sound(SoundType.WOOD).notSolid()), ItemGroup.DECORATIONS);
     public static final RegistryObject<Block> LARGE_CYPRESS_KNEE = HELPER.createBlock("large_cypress_knee", ()->new DoubleCypressKneeBlock(AbstractBlock.Properties.create(Material.WOOD, MaterialColor.BROWN).hardnessAndResistance(2.0F).sound(SoundType.WOOD).notSolid()), ItemGroup.DECORATIONS);
@@ -71,23 +71,23 @@ public class BayouBluesBlocks {
     public static final RegistryObject<Block> GOOSEBERRY_SACK = HELPER.createCompatBlock("quark", "gooseberry_sack", ()->new Block(Block.Properties.create(Material.WOOL, MaterialColor.GREEN).hardnessAndResistance(0.5F).sound(SoundType.CLOTH)), ItemGroup.DECORATIONS);
 
     // lilies
-    public static final RegistryObject<Block> BLUE_LILY = HELPER.createBlockNoItem("blue_lily", ()->new LilyFlowerBlock(BayouBluesItems.BLUE_LILY, AbstractBlock.Properties.from(Blocks.LILY_PAD)));
-    public static final RegistryObject<Block> LIGHT_GRAY_LILY = HELPER.createBlockNoItem("light_gray_lily", ()->new LilyFlowerBlock(BayouBluesItems.LIGHT_GRAY_LILY, AbstractBlock.Properties.from(Blocks.LILY_PAD)));
-    public static final RegistryObject<Block> CYAN_LILY = HELPER.createBlockNoItem("cyan_lily", ()->new LilyFlowerBlock(BayouBluesItems.CYAN_LILY, AbstractBlock.Properties.from(Blocks.LILY_PAD)));
-    public static final RegistryObject<Block> LIGHT_BLUE_LILY = HELPER.createBlockNoItem("light_blue_lily", ()->new LilyFlowerBlock(BayouBluesItems.LIGHT_BLUE_LILY, AbstractBlock.Properties.from(Blocks.LILY_PAD)));
-    public static final RegistryObject<Block> MAGENTA_LILY = HELPER.createBlockNoItem("magenta_lily", ()->new LilyFlowerBlock(BayouBluesItems.MAGENTA_LILY, AbstractBlock.Properties.from(Blocks.LILY_PAD)));
-    public static final RegistryObject<Block> PINK_LILY = HELPER.createBlockNoItem("pink_lily", ()->new LilyFlowerBlock(BayouBluesItems.PINK_LILY, AbstractBlock.Properties.from(Blocks.LILY_PAD)));
-    public static final RegistryObject<Block> PURPLE_LILY = HELPER.createBlockNoItem("purple_lily", ()->new LilyFlowerBlock(BayouBluesItems.PURPLE_LILY, AbstractBlock.Properties.from(Blocks.LILY_PAD)));
-    public static final RegistryObject<Block> WHITE_LILY = HELPER.createBlockNoItem("white_lily", ()->new LilyFlowerBlock(BayouBluesItems.WHITE_LILY, AbstractBlock.Properties.from(Blocks.LILY_PAD)));
+    public static final RegistryObject<Block> BLUE_LILY = HELPER.createBlockNoItem("blue_lily", ()->new LilyFlowerBlock(BayouBluesItems.BLUE_LILY, Properties.LILY));
+    public static final RegistryObject<Block> LIGHT_GRAY_LILY = HELPER.createBlockNoItem("light_gray_lily", ()->new LilyFlowerBlock(BayouBluesItems.LIGHT_GRAY_LILY, Properties.LILY));
+    public static final RegistryObject<Block> CYAN_LILY = HELPER.createBlockNoItem("cyan_lily", ()->new LilyFlowerBlock(BayouBluesItems.CYAN_LILY, Properties.LILY));
+    public static final RegistryObject<Block> LIGHT_BLUE_LILY = HELPER.createBlockNoItem("light_blue_lily", ()->new LilyFlowerBlock(BayouBluesItems.LIGHT_BLUE_LILY, Properties.LILY));
+    public static final RegistryObject<Block> MAGENTA_LILY = HELPER.createBlockNoItem("magenta_lily", ()->new LilyFlowerBlock(BayouBluesItems.MAGENTA_LILY, Properties.LILY));
+    public static final RegistryObject<Block> PINK_LILY = HELPER.createBlockNoItem("pink_lily", ()->new LilyFlowerBlock(BayouBluesItems.PINK_LILY, Properties.LILY));
+    public static final RegistryObject<Block> PURPLE_LILY = HELPER.createBlockNoItem("purple_lily", ()->new LilyFlowerBlock(BayouBluesItems.PURPLE_LILY, Properties.LILY));
+    public static final RegistryObject<Block> WHITE_LILY = HELPER.createBlockNoItem("white_lily", ()->new LilyFlowerBlock(BayouBluesItems.WHITE_LILY, Properties.LILY));
 
-    public static final RegistryObject<Block> POTTED_BLUE_LILY = HELPER.createBlockNoItem("potted_blue_lily", ()->new FlowerPotBlock(BLUE_LILY.get(), Block.Properties.from(Blocks.POTTED_ALLIUM)));
-    public static final RegistryObject<Block> POTTED_LIGHT_GRAY_LILY = HELPER.createBlockNoItem("potted_light_gray_lily", ()->new FlowerPotBlock(LIGHT_GRAY_LILY.get(), Block.Properties.from(Blocks.POTTED_ALLIUM)));
-    public static final RegistryObject<Block> POTTED_CYAN_LILY = HELPER.createBlockNoItem("potted_cyan_lily", ()->new FlowerPotBlock(CYAN_LILY.get(), Block.Properties.from(Blocks.POTTED_ALLIUM)));
-    public static final RegistryObject<Block> POTTED_LIGHT_BLUE_LILY = HELPER.createBlockNoItem("potted_light_blue_lily", ()->new FlowerPotBlock(LIGHT_BLUE_LILY.get(), Block.Properties.from(Blocks.POTTED_ALLIUM)));
-    public static final RegistryObject<Block> POTTED_MAGENTA_LILY = HELPER.createBlockNoItem("potted_magenta_lily", ()->new FlowerPotBlock(MAGENTA_LILY.get(), Block.Properties.from(Blocks.POTTED_ALLIUM)));
-    public static final RegistryObject<Block> POTTED_PINK_LILY = HELPER.createBlockNoItem("potted_pink_lily", ()->new FlowerPotBlock(PINK_LILY.get(), Block.Properties.from(Blocks.POTTED_ALLIUM)));
-    public static final RegistryObject<Block> POTTED_PURPLE_LILY = HELPER.createBlockNoItem("potted_purple_lily", ()->new FlowerPotBlock(PURPLE_LILY.get(), Block.Properties.from(Blocks.POTTED_ALLIUM)));
-    public static final RegistryObject<Block> POTTED_WHITE_LILY = HELPER.createBlockNoItem("potted_white_lily", ()->new FlowerPotBlock(WHITE_LILY.get(), Block.Properties.from(Blocks.POTTED_ALLIUM)));
+    public static final RegistryObject<Block> POTTED_BLUE_LILY = HELPER.createBlockNoItem("potted_blue_lily", ()->new FlowerPotBlock(BLUE_LILY.get(), Properties.FLOWER_POT));
+    public static final RegistryObject<Block> POTTED_LIGHT_GRAY_LILY = HELPER.createBlockNoItem("potted_light_gray_lily", ()->new FlowerPotBlock(LIGHT_GRAY_LILY.get(), Properties.FLOWER_POT));
+    public static final RegistryObject<Block> POTTED_CYAN_LILY = HELPER.createBlockNoItem("potted_cyan_lily", ()->new FlowerPotBlock(CYAN_LILY.get(), Properties.FLOWER_POT));
+    public static final RegistryObject<Block> POTTED_LIGHT_BLUE_LILY = HELPER.createBlockNoItem("potted_light_blue_lily", ()->new FlowerPotBlock(LIGHT_BLUE_LILY.get(), Properties.FLOWER_POT));
+    public static final RegistryObject<Block> POTTED_MAGENTA_LILY = HELPER.createBlockNoItem("potted_magenta_lily", ()->new FlowerPotBlock(MAGENTA_LILY.get(), Properties.FLOWER_POT));
+    public static final RegistryObject<Block> POTTED_PINK_LILY = HELPER.createBlockNoItem("potted_pink_lily", ()->new FlowerPotBlock(PINK_LILY.get(), Properties.FLOWER_POT));
+    public static final RegistryObject<Block> POTTED_PURPLE_LILY = HELPER.createBlockNoItem("potted_purple_lily", ()->new FlowerPotBlock(PURPLE_LILY.get(), Properties.FLOWER_POT));
+    public static final RegistryObject<Block> POTTED_WHITE_LILY = HELPER.createBlockNoItem("potted_white_lily", ()->new FlowerPotBlock(WHITE_LILY.get(), Properties.FLOWER_POT));
 
     // algae
     public static final RegistryObject<Block> ALGAE = HELPER.createBlockNoItem("algae", ()->new AlgaeBlock(AbstractBlock.Properties.create(Material.PLANTS).zeroHardnessAndResistance().sound(SoundType.LILY_PADS).notSolid().doesNotBlockMovement()));
@@ -103,5 +103,38 @@ public class BayouBluesBlocks {
 
     public static class Properties {
         public static final AbstractBlock.Properties ALGAE_THATCH = AbstractBlock.Properties.create(Material.ORGANIC, MaterialColor.LIME).hardnessAndResistance(0.5F).sound(SoundType.PLANT).notSolid().harvestTool(ToolType.HOE);
+        public static final AbstractBlock.Properties HEDGE = AbstractBlock.Properties.from(Blocks.OAK_FENCE);
+
+        public static final AbstractBlock.Properties CYPRESS_LEAVES = AbstractBlock.Properties.create(Material.LEAVES, MaterialColor.GREEN).harvestTool(ToolType.HOE).notSolid().hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT).setAllowsSpawn(BayouBluesBlocks.Properties::allowsSpawnOnLeaves).setSuffocates(BayouBluesBlocks.Properties::isntSolid).setBlocksVision(BayouBluesBlocks.Properties::isntSolid);;
+        public static final AbstractBlock.Properties CYPRESS_CARPET = AbstractBlock.Properties.create(Material.CARPET, MaterialColor.GREEN).hardnessAndResistance(0.0F).sound(SoundType.PLANT).harvestTool(ToolType.HOE).notSolid();
+
+        public static final AbstractBlock.Properties PLANKS = AbstractBlock.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD);
+        public static final AbstractBlock.Properties DOOR = AbstractBlock.Properties.create(Material.WOOD, MaterialColor.WOOD).notSolid().hardnessAndResistance(3.0F).sound(SoundType.WOOD);
+        public static final AbstractBlock.Properties BUTTON = AbstractBlock.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.5F).sound(SoundType.WOOD);
+        public static final AbstractBlock.Properties PRESSURE_PLATE = AbstractBlock.Properties.create(Material.WOOD).doesNotBlockMovement().hardnessAndResistance(0.5F).sound(SoundType.WOOD);
+        public static final AbstractBlock.Properties LADDER = AbstractBlock.Properties.create(Material.MISCELLANEOUS).notSolid().harvestTool(ToolType.AXE).hardnessAndResistance(0.4F).sound(SoundType.LADDER);
+        public static final AbstractBlock.Properties BOOKSHELF = AbstractBlock.Properties.create(Material.WOOD).hardnessAndResistance(1.5F).sound(SoundType.WOOD);
+        public static final AbstractBlock.Properties LOG = AbstractBlock.Properties.create(Material.WOOD, MaterialColor.BROWN).hardnessAndResistance(2.0F).sound(SoundType.WOOD);
+        public static final AbstractBlock.Properties SAPLING = AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT);
+
+        public static final AbstractBlock.Properties FLOWER_POT = AbstractBlock.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.0F).notSolid();
+
+        public static final AbstractBlock.Properties LILY = AbstractBlock.Properties.from(Blocks.LILY_PAD);
+
+        public static boolean allowsSpawnOnLeaves(BlockState state, IBlockReader access, BlockPos pos, EntityType<?> entity) {
+            return entity == EntityType.OCELOT || entity == EntityType.PARROT;
+        }
+
+        public static boolean alwaysAllowSpawn(BlockState state, IBlockReader reader, BlockPos pos, EntityType<?> entity) {
+            return true;
+        }
+
+        public static boolean needsPostProcessing(BlockState state, IBlockReader reader, BlockPos pos) {
+            return true;
+        }
+
+        public static boolean isntSolid(BlockState state, IBlockReader reader, BlockPos pos) {
+            return false;
+        }
     }
 }
