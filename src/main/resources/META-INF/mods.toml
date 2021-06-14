@@ -1,7 +1,7 @@
 modLoader="javafml"
 loaderVersion="[32,)"
 license="All rights reserved"
-issueTrackerURL="https://github.com/teamauroramods/BayouBlues/issues"
+issueTrackerURL="https://github.com/teamauroramods/BayouBlues-Forge/issues"
 
 [[mods]]
     modId="bayou_blues"
