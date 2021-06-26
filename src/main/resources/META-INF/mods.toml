@@ -1,13 +1,13 @@
 modLoader="javafml"
 loaderVersion="[32,)"
 license="All rights reserved"
-issueTrackerURL="https://github.com/teamauroramods/BayouBlues/issues"
+issueTrackerURL="https://github.com/teamauroramods/BayouBlues-Forge/issues"
 
 [[mods]]
     modId="bayou_blues"
     version="${file.jarVersion}"
     displayName="Bayou Blues"
-    displayURL="https://discord.gg/BgE4EpP"
+    displayURL="https://discord.gg/VzXSCFp"
     logoFile="logo.png"
     authors="Team Aurora"
     description="A swampy new biome!"
