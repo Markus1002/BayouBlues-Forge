@@ -38,7 +38,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = BayouBlues.MODID)
+@Mod.EventBusSubscriber(modid = BayouBlues.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class BayouBluesEvents {
 
     @SubscribeEvent
@@ -72,6 +72,8 @@ public class BayouBluesEvents {
         BlockState state = event.getBlock();
         BlockPos pos = event.getPos();
         World world = event.getWorld();
+
+        //world.setBlockState(pos, Blocks.DIAMOND_BLOCK.getDefaultState(), 3);
 
         if (state.getBlock() == Blocks.LILY_PAD && BayouBluesConfig.COMMON.lilyBonemealBehavior.get() == 1) {
             if (!ModList.get().isLoaded("environmental") || world.getRandom().nextBoolean() || checkAdjacentForSolid(world, pos.down())) {
