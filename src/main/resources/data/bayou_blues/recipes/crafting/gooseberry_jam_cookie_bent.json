@@ -3,7 +3,7 @@
   "group": "cookie",
   "pattern": [
     "#X",
-    "X"
+    "X "
   ],
   "key": {
     "#": {
